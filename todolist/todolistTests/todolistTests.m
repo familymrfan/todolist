@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "TodoLogic.h"
+#import "Todo.h"
 
 @interface todolistTests : XCTestCase
 
@@ -35,6 +37,23 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (Todo *)buildTodo
+{
+    Todo* todo = [[Todo alloc] init];
+    todo.subject = @"蛋卷该吃饭了";
+    todo.detail = @"吃拌面";
+    return todo;
+}
+
+- (void)testTodoLogicCreateTodo
+{
+    Todo* todo = [self buildTodo];
+    [TodoLogic createNewTodo:todo finishCreate:^(id result) {
+            
+    }];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
 }
 
 @end
