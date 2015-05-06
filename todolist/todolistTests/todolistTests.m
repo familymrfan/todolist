@@ -51,7 +51,7 @@
 {
     Todo* todo = [self buildTodo];
     [TodoLogic createNewTodo:todo finishCreate:^(id result) {
-        [TodoLogic putOnAnotherTodoWithSrcTodoId:@2 withDestTodoId:nil finish:^(id result) {
+        [TodoLogic putOnAnotherTodoWithSrcTodoId:@18 withDestTodoId:nil finish:^(id result) {
             
         }];
     }];

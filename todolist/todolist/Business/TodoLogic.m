@@ -70,7 +70,7 @@
         }
         NSString* upTodoPriority = nil;
         NSString* srcTodoPriority = nil;
-        NSArray* todos = [[DataLibrary querier] query:[Todo class] otherCondition:@"where priority > ? limit 1" withParam:@[destTodoPriority]];
+        NSArray* todos = [[DataLibrary querier] query:[Todo class] otherCondition:@"where priority > ? order by priority limit 1" withParam:@[destTodoPriority]];
         // top insert
         if ([todos count] == 0) {
             srcTodoPriority = [self risePriority:destTodoPriority];
