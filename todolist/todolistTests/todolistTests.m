@@ -43,7 +43,7 @@
 {
     Todo* todo = [[Todo alloc] init];
     todo.subject = @"蛋卷该吃饭了";
-    todo.detail = @"吃拌面";
+    todo.detail = [NSString stringWithFormat:@"%d", arc4random() % 10000];
     return todo;
 }
 
@@ -51,7 +51,9 @@
 {
     Todo* todo = [self buildTodo];
     [TodoLogic createNewTodo:todo finishCreate:^(id result) {
+        [TodoLogic putOnAnotherTodoWithSrcTodoId:@2 withDestTodoId:nil finish:^(id result) {
             
+        }];
     }];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
 }

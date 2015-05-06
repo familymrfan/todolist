@@ -14,4 +14,7 @@
 // 添加一条新的待办
 + (void)createNewTodo:(Todo *)todo finishCreate:(void(^)(id result))finishCreate;
 
+// 移动一条待办在另一条待办之上, 如果destTodoId是nil，移动置最底层
++ (void)putOnAnotherTodoWithSrcTodoId:(NSNumber *)srcTodoId withDestTodoId:(NSNumber *)destTodoId finish:(void(^)(id result))finish;
+
 @end

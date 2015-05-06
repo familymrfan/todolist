@@ -10,17 +10,4 @@
 
 @implementation Todo
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.subject = @"未知主题";
-        self.detail = @"未知详情";
-        self.create_data = [NSDate date];
-        self.status = @(kTodoStatusNoDo);
-        self.priority = @"";
-    }
-    return self;
-}
-
 @end
