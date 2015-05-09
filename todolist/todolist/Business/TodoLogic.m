@@ -9,9 +9,29 @@
 #import "TodoLogic.h"
 #import "DataLibrary.h"
 #import "QueueManager.h"
+#import "Macro.h"
+
+@interface TodoLogic ()
+
+@property (nonatomic) SerializeQueue* queue;
+
+@end
 
 @implementation TodoLogic
 
++ (instancetype)sharedInstace
+{
+    SHARED_OBJECT(TodoLogic);
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.queue = [[SerializeQueue alloc] init];
+    }
+    return self;
+}
 + (NSString *)pickMaxPriority
 {
     NSArray* todos = [[DataLibrary querier] query:[Todo class] otherCondition:@"where priority=(select max(priority) from Todo)" withParam:nil];
@@ -41,7 +61,8 @@
 
 + (void)createNewTodo:(Todo *)todo finishCreate:(void(^)(id result))finishCreate
 {
-    [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+    TodoLogic* todoLogic = [self sharedInstace];
+    [todoLogic.queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         NSString* priority = [self risePriority:[self pickMaxPriority]];
         assert(priority);
         todo.create_date = [NSDate date];
@@ -87,6 +108,17 @@
         finishBlock(nil);
         finish(nil);
     }];
+}
+
++ (NSArray *)queryDayTodoListWithDate:(NSDate *)date
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay;
+    NSDateComponents *components  = [calendar components:unitFlags fromDate:date];
+    NSDate* nowDate = [calendar dateFromComponents:components];
+    NSDate* tomorowDate = [nowDate dateByAddingTimeInterval:24*60*60];
+    NSArray* todolist = [[DataLibrary querier] query:[Todo class] otherCondition:@"where create_date >= ? and create_date < ? order by priority desc" withParam:@[@([nowDate timeIntervalSince1970]), @([tomorowDate timeIntervalSince1970])]];
+    return todolist;
 }
 
 @end

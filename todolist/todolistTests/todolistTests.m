@@ -51,9 +51,24 @@
 {
     Todo* todo = [self buildTodo];
     [TodoLogic createNewTodo:todo finishCreate:^(id result) {
-        [TodoLogic putOnAnotherTodoWithSrcTodoId:@18 withDestTodoId:nil finish:^(id result) {
-            
-        }];
+        NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
+        Todo* queryTodo = list.firstObject;
+        XCTAssertTrue(queryTodo);
+        XCTAssertTrue([todo.detail isEqualToString:queryTodo.detail]);
+    }];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
+}
+
+- (void)testMoveTodo
+{
+    // 随意抽取一项移动到最底部
+    NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
+    NSNumber* srcTodoId = [NSNumber numberWithInteger:arc4random() % list.count];
+    [TodoLogic putOnAnotherTodoWithSrcTodoId:srcTodoId withDestTodoId:nil finish:^(id result) {
+        NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
+        Todo* queryTodo = list.lastObject;
+        XCTAssertTrue(queryTodo);
+        XCTAssertTrue([queryTodo.rowId isEqualToNumber:srcTodoId]);
     }];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
 }
