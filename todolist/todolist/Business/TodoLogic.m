@@ -65,12 +65,15 @@
     [todoLogic.queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         NSString* priority = [self risePriority:[self pickMaxPriority]];
         assert(priority);
+        todo.rowId = nil;
         todo.create_date = [NSDate date];
         todo.priority = priority;
         todo.status = @(kTodoStatusNoDo);
         [[DataLibrary saver] save:todo];
         finishBlock(nil);
-        finishCreate(nil);
+        if (finishCreate) {
+            finishCreate(nil);
+        }
     }];
 }
 
@@ -106,7 +109,9 @@
         updateTodo.priority = srcTodoPriority;
         [[DataLibrary saver] save:updateTodo];
         finishBlock(nil);
-        finish(nil);
+        if (finish) {
+            finish(nil);
+        }
     }];
 }
 
@@ -132,7 +137,9 @@
     [todoLogic.queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         [[DataLibrary saver] save:todo];
         finishBlock(nil);
-        finish(nil);
+        if (finish) {
+            finish(nil);
+        }
     }];
 }
 
