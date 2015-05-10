@@ -20,4 +20,10 @@
 // 返回date标记的日期的待办列表
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date;
 
+// 根据todoId返回待办
++ (Todo *)queryTodoWithId:(NSNumber *)todoId;
+
+// 更新待办
++ (void)updateTodo:(Todo *)todo finish:(void(^)(id result))finish;
+
 @end

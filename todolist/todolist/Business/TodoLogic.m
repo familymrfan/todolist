@@ -121,4 +121,19 @@
     return todolist;
 }
 
++ (Todo *)queryTodoWithId:(NSNumber *)todoId
+{
+    return [[DataLibrary querier] query:[Todo class] otherCondition:@"where rowId = ?" withParam:@[todoId]].firstObject;
+}
+
++ (void)updateTodo:(Todo *)todo finish:(void(^)(id result))finish
+{
+    TodoLogic* todoLogic = [self sharedInstace];
+    [todoLogic.queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[DataLibrary saver] save:todo];
+        finishBlock(nil);
+        finish(nil);
+    }];
+}
+
 @end

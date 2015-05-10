@@ -63,13 +63,31 @@
 {
     // 随意抽取一项移动到最底部
     NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
-    NSNumber* srcTodoId = [NSNumber numberWithInteger:arc4random() % list.count];
-    [TodoLogic putOnAnotherTodoWithSrcTodoId:srcTodoId withDestTodoId:nil finish:^(id result) {
-        NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
-        Todo* queryTodo = list.lastObject;
-        XCTAssertTrue(queryTodo);
-        XCTAssertTrue([queryTodo.rowId isEqualToNumber:srcTodoId]);
-    }];
+    if (list.count > 0) {
+        NSNumber* srcTodoId = [NSNumber numberWithInteger:arc4random() % list.count + 1];
+        [TodoLogic putOnAnotherTodoWithSrcTodoId:srcTodoId withDestTodoId:nil finish:^(id result) {
+            NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
+            Todo* queryTodo = list.lastObject;
+            XCTAssertTrue(queryTodo);
+            XCTAssertTrue([queryTodo.rowId isEqualToNumber:srcTodoId]);
+        }];
+    }
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
+}
+
+- (void)testUpdateTodo
+{
+    NSArray* list = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
+    if (list.count > 0) {
+        NSNumber* srcTodoId = [NSNumber numberWithInteger:arc4random() % list.count + 1];
+        Todo* todo = [[Todo alloc] init];
+        todo.rowId = srcTodoId;
+        todo.status = @(arc4random() % 1000);
+        [TodoLogic updateTodo:todo finish:^(id result) {
+            Todo* queryTodo = [TodoLogic queryTodoWithId:srcTodoId];
+            XCTAssertTrue([todo.status isEqualToNumber:queryTodo.status]);
+        }];
+    }
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
 }
 
