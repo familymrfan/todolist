@@ -21,6 +21,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y30-ZR-RdX" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-u0-1sb" userLabel="addTodoView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="yvN-BT-JiI"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="yvN-BT-JiI"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="270" width="384" height="40"/>
+                                            <mask key="constraints">
+                                                <include reference="yvN-BT-JiI"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-9P-Bc7" userLabel="weather">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" red="0.9882352941176471" green="0.61568627450980395" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,6 +76,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NxM-u0-1sb" secondAttribute="trailing" constant="8" id="15h-U9-dEx"/>
                                     <constraint firstItem="BxU-9P-Bc7" firstAttribute="leading" secondItem="y30-ZR-RdX" secondAttribute="leading" constant="8" id="NpB-PN-As5"/>
                                     <constraint firstItem="772-zp-1qm" firstAttribute="top" secondItem="y30-ZR-RdX" secondAttribute="top" constant="48" id="OT4-n0-VhF"/>
                                     <constraint firstItem="772-zp-1qm" firstAttribute="leading" secondItem="y30-ZR-RdX" secondAttribute="leading" constant="8" id="Qaq-Yw-rq5"/>
@@ -66,37 +85,47 @@
                                     <constraint firstAttribute="trailing" secondItem="772-zp-1qm" secondAttribute="trailing" constant="8" id="XoA-b8-stR"/>
                                     <constraint firstAttribute="trailing" secondItem="BxU-9P-Bc7" secondAttribute="trailing" constant="8" id="n4f-cT-6dz"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="BxU-9P-Bc7" secondAttribute="bottom" id="qyf-BX-uwr"/>
+                                    <constraint firstItem="NxM-u0-1sb" firstAttribute="top" secondItem="BxU-9P-Bc7" secondAttribute="top" id="rqn-Ks-G7Q"/>
+                                    <constraint firstItem="NxM-u0-1sb" firstAttribute="leading" secondItem="y30-ZR-RdX" secondAttribute="leading" constant="8" id="rym-SJ-720"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
+                                        <exclude reference="NxM-u0-1sb"/>
                                         <exclude reference="BxU-9P-Bc7"/>
                                         <exclude reference="772-zp-1qm"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="OT4-n0-VhF"/>
-                                        <exclude reference="Qaq-Yw-rq5"/>
-                                        <exclude reference="ViE-BV-t3v"/>
-                                        <exclude reference="XoA-b8-stR"/>
                                         <exclude reference="NpB-PN-As5"/>
                                         <exclude reference="WxM-dr-3Ig"/>
                                         <exclude reference="n4f-cT-6dz"/>
                                         <exclude reference="qyf-BX-uwr"/>
+                                        <exclude reference="OT4-n0-VhF"/>
+                                        <exclude reference="Qaq-Yw-rq5"/>
+                                        <exclude reference="ViE-BV-t3v"/>
+                                        <exclude reference="XoA-b8-stR"/>
+                                        <exclude reference="15h-U9-dEx"/>
+                                        <exclude reference="rqn-Ks-G7Q"/>
+                                        <exclude reference="rym-SJ-720"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
+                                        <include reference="NxM-u0-1sb"/>
                                         <include reference="BxU-9P-Bc7"/>
                                         <include reference="772-zp-1qm"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="OT4-n0-VhF"/>
-                                        <include reference="Qaq-Yw-rq5"/>
-                                        <include reference="ViE-BV-t3v"/>
-                                        <include reference="XoA-b8-stR"/>
                                         <include reference="NpB-PN-As5"/>
                                         <include reference="WxM-dr-3Ig"/>
                                         <include reference="n4f-cT-6dz"/>
                                         <exclude reference="qyf-BX-uwr"/>
+                                        <include reference="OT4-n0-VhF"/>
+                                        <include reference="Qaq-Yw-rq5"/>
+                                        <include reference="ViE-BV-t3v"/>
+                                        <include reference="XoA-b8-stR"/>
+                                        <include reference="15h-U9-dEx"/>
+                                        <include reference="rqn-Ks-G7Q"/>
+                                        <include reference="rym-SJ-720"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -132,7 +161,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addTodoView" destination="NxM-u0-1sb" id="JdG-Bk-xWY"/>
                         <outlet property="todolistTableView" destination="772-zp-1qm" id="9AE-rQ-TeP"/>
+                        <outlet property="weatherView" destination="BxU-9P-Bc7" id="7ug-bM-LCt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
