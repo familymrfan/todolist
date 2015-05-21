@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "TodoLogic.h"
+#import "UIWeatherView.h"
+#import "UIAddTodoView.h"
 
 static const CGFloat flipAnimationSpeed = .3f;
 
@@ -15,9 +17,9 @@ static const CGFloat flipAnimationSpeed = .3f;
 
 @property (weak, nonatomic) IBOutlet UITableView *todolistTableView;
 
-@property (weak, nonatomic) IBOutlet UIView *weatherView;
+@property (weak, nonatomic) IBOutlet UIWeatherView *weatherView;
 
-@property (weak, nonatomic) IBOutlet UIView *addTodoView;
+@property (weak, nonatomic) IBOutlet UIAddTodoView *addTodoView;
 
 @property (nonatomic) NSArray* todolist;
 
@@ -60,6 +62,7 @@ static const CGFloat flipAnimationSpeed = .3f;
 - (void)leaveWeatherFinish:(id)sender
 {
     [[self.addTodoView superview] bringSubviewToFront:self.addTodoView];
+    [self.addTodoView.addTodoTextField becomeFirstResponder];
 }
 
 -(void)leaveAddTodo:(UITapGestureRecognizer *)sender

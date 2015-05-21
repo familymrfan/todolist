@@ -13,6 +13,8 @@
 		0B84C9321AE375EB00A93AA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C9311AE375EB00A93AA0 /* Images.xcassets */; };
 		0B84C9351AE375EB00A93AA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C9331AE375EB00A93AA0 /* LaunchScreen.xib */; };
 		0B84C9411AE375EB00A93AA0 /* todolistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9401AE375EB00A93AA0 /* todolistTests.m */; };
+		0BA0DD091B0B5C7800522DFF /* UIWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */; };
+		0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */; };
 		0BC4D39D1AECCA1A008D40A2 /* Mr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC4D39A1AECC9F2008D40A2 /* Mr.framework */; };
 		0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3A01AECD0CD008D40A2 /* ViewController.m */; };
 		0BC4D3A61AECD22B008D40A2 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3A51AECD22B008D40A2 /* Todo.m */; };
@@ -55,6 +57,10 @@
 		0B84C93A1AE375EB00A93AA0 /* todolistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todolistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B84C93F1AE375EB00A93AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B84C9401AE375EB00A93AA0 /* todolistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todolistTests.m; sourceTree = "<group>"; };
+		0BA0DD071B0B5C7800522DFF /* UIWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWeatherView.h; path = UI/UIWeatherView.h; sourceTree = "<group>"; };
+		0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWeatherView.m; path = UI/UIWeatherView.m; sourceTree = "<group>"; };
+		0BA0DD0C1B0B5CB300522DFF /* UIAddTodoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIAddTodoView.h; path = UI/UIAddTodoView.h; sourceTree = "<group>"; };
+		0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIAddTodoView.m; path = UI/UIAddTodoView.m; sourceTree = "<group>"; };
 		0BC4D3931AECC9F1008D40A2 /* Mr.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mr.xcodeproj; path = third_party/Mr./Mr.xcodeproj; sourceTree = "<group>"; };
 		0BC4D39F1AECD0CD008D40A2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = UI/ViewController.h; sourceTree = "<group>"; };
 		0BC4D3A01AECD0CD008D40A2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = UI/ViewController.m; sourceTree = "<group>"; };
@@ -166,6 +172,10 @@
 			children = (
 				0BC4D39F1AECD0CD008D40A2 /* ViewController.h */,
 				0BC4D3A01AECD0CD008D40A2 /* ViewController.m */,
+				0BA0DD071B0B5C7800522DFF /* UIWeatherView.h */,
+				0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */,
+				0BA0DD0C1B0B5CB300522DFF /* UIAddTodoView.h */,
+				0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -316,6 +326,8 @@
 				0B84C9241AE375EB00A93AA0 /* main.m in Sources */,
 				0BC4D3B01AECDF3E008D40A2 /* TodoLogic.m in Sources */,
 				0BC4D3A61AECD22B008D40A2 /* Todo.m in Sources */,
+				0BA0DD091B0B5C7800522DFF /* UIWeatherView.m in Sources */,
+				0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

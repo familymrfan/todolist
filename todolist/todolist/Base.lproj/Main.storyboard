@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -21,25 +21,55 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y30-ZR-RdX" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-u0-1sb" userLabel="addTodoView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-u0-1sb" userLabel="addTodoView" customClass="UIAddTodoView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1X-of-BoF" userLabel="addTodoTextField">
+                                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <variation key="widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="143" y="5" width="97" height="30"/>
+                                                </variation>
+                                            </textField>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="x1X-of-BoF" firstAttribute="leading" secondItem="NxM-u0-1sb" secondAttribute="leading" constant="8" id="1m5-oY-r36"/>
+                                            <constraint firstAttribute="bottom" secondItem="x1X-of-BoF" secondAttribute="bottom" constant="8" id="EJK-RK-eEe"/>
+                                            <constraint firstItem="x1X-of-BoF" firstAttribute="top" secondItem="NxM-u0-1sb" secondAttribute="top" constant="8" id="XhP-VX-sct"/>
+                                            <constraint firstAttribute="trailing" secondItem="x1X-of-BoF" secondAttribute="trailing" constant="8" id="ucA-1e-bVp"/>
                                             <constraint firstAttribute="height" constant="40" id="yvN-BT-JiI"/>
                                         </constraints>
                                         <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="x1X-of-BoF"/>
+                                            </mask>
                                             <mask key="constraints">
                                                 <exclude reference="yvN-BT-JiI"/>
+                                                <exclude reference="1m5-oY-r36"/>
+                                                <exclude reference="EJK-RK-eEe"/>
+                                                <exclude reference="XhP-VX-sct"/>
+                                                <exclude reference="ucA-1e-bVp"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="8" y="270" width="384" height="40"/>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="x1X-of-BoF"/>
+                                            </mask>
                                             <mask key="constraints">
                                                 <include reference="yvN-BT-JiI"/>
+                                                <include reference="1m5-oY-r36"/>
+                                                <include reference="EJK-RK-eEe"/>
+                                                <include reference="XhP-VX-sct"/>
+                                                <include reference="ucA-1e-bVp"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outlet property="addTodoTextField" destination="x1X-of-BoF" id="O2o-ih-uMD"/>
+                                        </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-9P-Bc7" userLabel="weather">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-9P-Bc7" userLabel="weather" customClass="UIWeatherView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" red="0.9882352941176471" green="0.61568627450980395" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -95,14 +125,14 @@
                                         <exclude reference="772-zp-1qm"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="NpB-PN-As5"/>
-                                        <exclude reference="WxM-dr-3Ig"/>
-                                        <exclude reference="n4f-cT-6dz"/>
-                                        <exclude reference="qyf-BX-uwr"/>
                                         <exclude reference="OT4-n0-VhF"/>
                                         <exclude reference="Qaq-Yw-rq5"/>
                                         <exclude reference="ViE-BV-t3v"/>
                                         <exclude reference="XoA-b8-stR"/>
+                                        <exclude reference="NpB-PN-As5"/>
+                                        <exclude reference="WxM-dr-3Ig"/>
+                                        <exclude reference="n4f-cT-6dz"/>
+                                        <exclude reference="qyf-BX-uwr"/>
                                         <exclude reference="15h-U9-dEx"/>
                                         <exclude reference="rqn-Ks-G7Q"/>
                                         <exclude reference="rym-SJ-720"/>
@@ -115,14 +145,14 @@
                                         <include reference="772-zp-1qm"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="NpB-PN-As5"/>
-                                        <include reference="WxM-dr-3Ig"/>
-                                        <include reference="n4f-cT-6dz"/>
-                                        <exclude reference="qyf-BX-uwr"/>
                                         <include reference="OT4-n0-VhF"/>
                                         <include reference="Qaq-Yw-rq5"/>
                                         <include reference="ViE-BV-t3v"/>
                                         <include reference="XoA-b8-stR"/>
+                                        <include reference="NpB-PN-As5"/>
+                                        <include reference="WxM-dr-3Ig"/>
+                                        <include reference="n4f-cT-6dz"/>
+                                        <exclude reference="qyf-BX-uwr"/>
                                         <include reference="15h-U9-dEx"/>
                                         <include reference="rqn-Ks-G7Q"/>
                                         <include reference="rym-SJ-720"/>
