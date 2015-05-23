@@ -11,9 +11,9 @@
 #import "UIWeatherView.h"
 #import "UIAddTodoView.h"
 
-static const CGFloat flipAnimationSpeed = .3f;
+static const CGFloat kAnimationTodoSpeed = .3f;
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAddTodoViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *todolistTableView;
 
@@ -23,6 +23,8 @@ static const CGFloat flipAnimationSpeed = .3f;
 
 @property (nonatomic) NSArray* todolist;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addTodoViewToTop;
+
 @end
 
 @implementation ViewController
@@ -30,64 +32,15 @@ static const CGFloat flipAnimationSpeed = .3f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.todolist = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
-    UISwipeGestureRecognizer* weatherSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leaveWeather:)];
-    weatherSwipe.direction = UISwipeGestureRecognizerDirectionUp|UISwipeGestureRecognizerDirectionDown;
-    [self.weatherView addGestureRecognizer:weatherSwipe];
     
-    UISwipeGestureRecognizer* addTodoSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leaveAddTodo:)];
-    addTodoSwipe.direction = UISwipeGestureRecognizerDirectionUp|UISwipeGestureRecognizerDirectionDown;
-    [self.addTodoView addGestureRecognizer:addTodoSwipe];
-}
-
--(void)leaveWeather:(UITapGestureRecognizer *)sender
-{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:flipAnimationSpeed];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.weatherView.transform = CGAffineTransformScale(self.weatherView.transform, 1.0, 0.01);
-    self.addTodoView.transform = CGAffineTransformScale(self.addTodoView.transform, 1.0, 0.01);
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(leaveWeatherFinish:)];
-    [UIView commitAnimations];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTodoListView:)];
+    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    //将触摸事件添加到当前view
+    [self.todolistTableView addGestureRecognizer:tapGestureRecognizer];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelay:flipAnimationSpeed];
-    [UIView setAnimationDuration:flipAnimationSpeed];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.addTodoView.transform = CGAffineTransformScale(self.addTodoView.transform, 1.0, 100.0);
-    self.weatherView.transform = CGAffineTransformScale(self.weatherView.transform, 1.0, 100.0);
-    [UIView commitAnimations];
-}
+    [self.addTodoView setDelegate:self];
 
-- (void)leaveWeatherFinish:(id)sender
-{
-    [[self.addTodoView superview] bringSubviewToFront:self.addTodoView];
-    [self.addTodoView.addTodoTextField becomeFirstResponder];
-}
-
--(void)leaveAddTodo:(UITapGestureRecognizer *)sender
-{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:flipAnimationSpeed];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.weatherView.transform = CGAffineTransformScale(self.weatherView.transform, 1.0, 0.01);
-    self.addTodoView.transform = CGAffineTransformScale(self.addTodoView.transform, 1.0, 0.01);
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(leaveAddTodoFinish:)];
-    [UIView commitAnimations];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelay:flipAnimationSpeed];
-    [UIView setAnimationDuration:flipAnimationSpeed];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.weatherView.transform = CGAffineTransformScale(self.weatherView.transform, 1.0, 100.0);
-    self.addTodoView.transform = CGAffineTransformScale(self.addTodoView.transform, 1.0, 100.0);
-    [UIView commitAnimations];
-}
-
-- (void)leaveAddTodoFinish:(id)sender
-{
-    [[self.weatherView superview] bringSubviewToFront:self.weatherView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,6 +66,54 @@ static const CGFloat flipAnimationSpeed = .3f;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
     cell.textLabel.text = [[self.todolist objectAtIndex:indexPath.row] subject];
     return cell;
+}
+
+// 展开添加待办
+- (void)expandAddTodo
+{
+    self.addTodoViewToTop.constant += self.weatherView.frame.size.height;
+    [UIView animateWithDuration:kAnimationTodoSpeed animations:^{
+        [self.addTodoView layoutIfNeeded];
+    }];
+    [self.addTodoView.addTodoTextField becomeFirstResponder];
+    [self.weatherView.addTodoButton setTitle:@"-" forState:UIControlStateNormal];
+}
+
+// 收起待办
+- (void)shrinkAddTodo
+{
+    self.addTodoViewToTop.constant = 0;
+    [UIView animateWithDuration:kAnimationTodoSpeed animations:^{
+        [self.addTodoView layoutIfNeeded];
+    }];
+    [self.addTodoView.addTodoTextField resignFirstResponder];
+    [self.weatherView.addTodoButton setTitle:@"+" forState:UIControlStateNormal];
+}
+
+- (BOOL)isShrink
+{
+    return [self.weatherView.addTodoButton.titleLabel.text isEqualToString:@"+"];
+}
+
+- (IBAction)addTodo:(id)sender {
+    if ([self isShrink]) {
+        [self expandAddTodo];
+    } else {
+        [self shrinkAddTodo];
+    }
+}
+
+-(void)addTodoDone
+{
+    if (![self isShrink]) {
+        [self shrinkAddTodo];
+    }
+}
+
+-(void)tapTodoListView:(UITapGestureRecognizer*)tap{
+    if (![self isShrink]) {
+        [self shrinkAddTodo];
+    }
 }
 
 @end

@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIAddTodoViewDelegate <NSObject>
+
+- (void)addTodoDone;
+
+@end
+
 @interface UIAddTodoView : UIView
 
+@property (nonatomic, weak) id<UIAddTodoViewDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UITextField* addTodoTextField;
 
 @end

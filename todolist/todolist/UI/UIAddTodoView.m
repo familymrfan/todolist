@@ -8,14 +8,22 @@
 
 #import "UIAddTodoView.h"
 
+@interface UIAddTodoView () <UITextFieldDelegate>
+
+@end
+
 @implementation UIAddTodoView
 
-- (instancetype)initWithCoder:(NSCoder *)coder
+-(void)awakeFromNib
 {
-    self = [super initWithCoder:coder];
-    if (self) {
-        
-    }
-    return self;
+    [self.addTodoTextField setDelegate:self];
+    self.addTodoTextField.returnKeyType = UIReturnKeyDone;
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.delegate addTodoDone];
+    return YES;
+}
+
 @end

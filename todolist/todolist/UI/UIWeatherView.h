@@ -10,4 +10,6 @@
 
 @interface UIWeatherView : UIView
 
+@property (nonatomic, weak) IBOutlet UIButton* addTodoButton;
+
 @end

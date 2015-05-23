@@ -21,71 +21,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y30-ZR-RdX" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-u0-1sb" userLabel="addTodoView" customClass="UIAddTodoView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1X-of-BoF" userLabel="addTodoTextField">
-                                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="143" y="5" width="97" height="30"/>
-                                                </variation>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="x1X-of-BoF" firstAttribute="leading" secondItem="NxM-u0-1sb" secondAttribute="leading" constant="8" id="1m5-oY-r36"/>
-                                            <constraint firstAttribute="bottom" secondItem="x1X-of-BoF" secondAttribute="bottom" constant="8" id="EJK-RK-eEe"/>
-                                            <constraint firstItem="x1X-of-BoF" firstAttribute="top" secondItem="NxM-u0-1sb" secondAttribute="top" constant="8" id="XhP-VX-sct"/>
-                                            <constraint firstAttribute="trailing" secondItem="x1X-of-BoF" secondAttribute="trailing" constant="8" id="ucA-1e-bVp"/>
-                                            <constraint firstAttribute="height" constant="40" id="yvN-BT-JiI"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="x1X-of-BoF"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <exclude reference="yvN-BT-JiI"/>
-                                                <exclude reference="1m5-oY-r36"/>
-                                                <exclude reference="EJK-RK-eEe"/>
-                                                <exclude reference="XhP-VX-sct"/>
-                                                <exclude reference="ucA-1e-bVp"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="subviews">
-                                                <include reference="x1X-of-BoF"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <include reference="yvN-BT-JiI"/>
-                                                <include reference="1m5-oY-r36"/>
-                                                <include reference="EJK-RK-eEe"/>
-                                                <include reference="XhP-VX-sct"/>
-                                                <include reference="ucA-1e-bVp"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <outlet property="addTodoTextField" destination="x1X-of-BoF" id="O2o-ih-uMD"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-9P-Bc7" userLabel="weather" customClass="UIWeatherView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <color key="backgroundColor" red="0.9882352941176471" green="0.61568627450980395" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="gwf-N2-oi7"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="gwf-N2-oi7"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="gwf-N2-oi7"/>
-                                            </mask>
-                                        </variation>
-                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="772-zp-1qm" userLabel="todolist">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,6 +38,94 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="Kqc-Pn-cwf"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-u0-1sb" userLabel="addTodoView" customClass="UIAddTodoView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入接下来您想做的事" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f7f-eN-Nah" userLabel="addTodoTextField">
+                                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <variation key="widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="143" y="5" width="97" height="30"/>
+                                                </variation>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="f7f-eN-Nah" secondAttribute="bottom" constant="5" id="J4p-t5-tZB"/>
+                                            <constraint firstItem="f7f-eN-Nah" firstAttribute="top" secondItem="NxM-u0-1sb" secondAttribute="top" constant="5" id="YcI-9V-dUt"/>
+                                            <constraint firstAttribute="trailing" secondItem="f7f-eN-Nah" secondAttribute="trailing" constant="5" id="jDo-cQ-G4E"/>
+                                            <constraint firstItem="f7f-eN-Nah" firstAttribute="leading" secondItem="NxM-u0-1sb" secondAttribute="leading" constant="5" id="wR9-gL-oFw"/>
+                                            <constraint firstAttribute="height" constant="40" id="yvN-BT-JiI"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="f7f-eN-Nah"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="yvN-BT-JiI"/>
+                                                <exclude reference="J4p-t5-tZB"/>
+                                                <exclude reference="YcI-9V-dUt"/>
+                                                <exclude reference="jDo-cQ-G4E"/>
+                                                <exclude reference="wR9-gL-oFw"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="f7f-eN-Nah"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="yvN-BT-JiI"/>
+                                                <include reference="J4p-t5-tZB"/>
+                                                <include reference="YcI-9V-dUt"/>
+                                                <include reference="jDo-cQ-G4E"/>
+                                                <include reference="wR9-gL-oFw"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="addTodoTextField" destination="f7f-eN-Nah" id="TZh-by-1N3"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-9P-Bc7" userLabel="weather" customClass="UIWeatherView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sf-z3-ogF">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="widthClass=compact" fixedFrame="YES">
+                                                    <rect key="frame" x="8" y="5" width="30" height="30"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="addTodo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OTH-Iw-cRe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.9882352941176471" green="0.61568627450980395" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gwf-N2-oi7"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="0sf-z3-ogF"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="gwf-N2-oi7"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="0sf-z3-ogF"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="gwf-N2-oi7"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="addTodoButton" destination="0sf-z3-ogF" id="BKN-dS-tE4"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -114,15 +137,16 @@
                                     <constraint firstItem="BxU-9P-Bc7" firstAttribute="top" secondItem="y30-ZR-RdX" secondAttribute="top" constant="8" id="WxM-dr-3Ig"/>
                                     <constraint firstAttribute="trailing" secondItem="772-zp-1qm" secondAttribute="trailing" constant="8" id="XoA-b8-stR"/>
                                     <constraint firstAttribute="trailing" secondItem="BxU-9P-Bc7" secondAttribute="trailing" constant="8" id="n4f-cT-6dz"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="BxU-9P-Bc7" secondAttribute="bottom" id="qyf-BX-uwr"/>
-                                    <constraint firstItem="NxM-u0-1sb" firstAttribute="top" secondItem="BxU-9P-Bc7" secondAttribute="top" id="rqn-Ks-G7Q"/>
+                                    <constraint firstItem="NxM-u0-1sb" firstAttribute="top" secondItem="BxU-9P-Bc7" secondAttribute="top" id="rqn-Ks-G7Q">
+                                        <variation key="widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="NxM-u0-1sb" firstAttribute="leading" secondItem="y30-ZR-RdX" secondAttribute="leading" constant="8" id="rym-SJ-720"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
+                                        <exclude reference="772-zp-1qm"/>
                                         <exclude reference="NxM-u0-1sb"/>
                                         <exclude reference="BxU-9P-Bc7"/>
-                                        <exclude reference="772-zp-1qm"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="OT4-n0-VhF"/>
@@ -132,7 +156,6 @@
                                         <exclude reference="NpB-PN-As5"/>
                                         <exclude reference="WxM-dr-3Ig"/>
                                         <exclude reference="n4f-cT-6dz"/>
-                                        <exclude reference="qyf-BX-uwr"/>
                                         <exclude reference="15h-U9-dEx"/>
                                         <exclude reference="rqn-Ks-G7Q"/>
                                         <exclude reference="rym-SJ-720"/>
@@ -140,9 +163,9 @@
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
+                                        <include reference="772-zp-1qm"/>
                                         <include reference="NxM-u0-1sb"/>
                                         <include reference="BxU-9P-Bc7"/>
-                                        <include reference="772-zp-1qm"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="OT4-n0-VhF"/>
@@ -152,7 +175,6 @@
                                         <include reference="NpB-PN-As5"/>
                                         <include reference="WxM-dr-3Ig"/>
                                         <include reference="n4f-cT-6dz"/>
-                                        <exclude reference="qyf-BX-uwr"/>
                                         <include reference="15h-U9-dEx"/>
                                         <include reference="rqn-Ks-G7Q"/>
                                         <include reference="rym-SJ-720"/>
@@ -192,6 +214,7 @@
                     </view>
                     <connections>
                         <outlet property="addTodoView" destination="NxM-u0-1sb" id="JdG-Bk-xWY"/>
+                        <outlet property="addTodoViewToTop" destination="rqn-Ks-G7Q" id="Ncs-Vd-yqe"/>
                         <outlet property="todolistTableView" destination="772-zp-1qm" id="9AE-rQ-TeP"/>
                         <outlet property="weatherView" destination="BxU-9P-Bc7" id="7ug-bM-LCt"/>
                     </connections>
