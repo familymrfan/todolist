@@ -21,7 +21,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 
 @property (weak, nonatomic) IBOutlet UIAddTodoView *addTodoView;
 
-@property (nonatomic) NSArray* todolist;
+@property (nonatomic) NSMutableArray* todolist;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addTodoViewToTop;
 
@@ -31,7 +31,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.todolist = [TodoLogic queryDayTodoListWithDate:[NSDate date]];
+    self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:[NSDate date]]];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTodoListView:)];
     //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
@@ -103,14 +103,27 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     }
 }
 
--(void)addTodoDone
+- (void)addTodoDone
 {
     if (![self isShrink]) {
-        [self shrinkAddTodo];
+        self.addTodoViewToTop.constant = 0;
+        [self.addTodoView.addTodoTextField resignFirstResponder];
+        [self.weatherView.addTodoButton setTitle:@"+" forState:UIControlStateNormal];
+        [UIView animateWithDuration:kAnimationTodoSpeed animations:^{
+            [self.addTodoView layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            Todo* todo = [[Todo alloc] init];
+            todo.subject = self.addTodoView.addTodoTextField.text;
+            [self.addTodoView.addTodoTextField setText:@""];
+            [self.todolist insertObject:todo atIndex:0];
+            [self.todolistTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            [TodoLogic createNewTodo:todo finishCreate:nil];
+        }];
     }
 }
 
--(void)tapTodoListView:(UITapGestureRecognizer*)tap{
+-(void)tapTodoListView:(UITapGestureRecognizer*)tap
+{
     if (![self isShrink]) {
         [self shrinkAddTodo];
     }
