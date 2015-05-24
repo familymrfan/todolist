@@ -10,12 +10,14 @@
 #import "TodoLogic.h"
 #import "UIWeatherView.h"
 #import "UIAddTodoView.h"
+#import "SWTableViewCell.h"
+#import "UITodoListView.h"
 
 static const CGFloat kAnimationTodoSpeed = .3f;
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAddTodoViewDelegate>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAddTodoViewDelegate, SWTableViewCellDelegate, UITodoListViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *todolistTableView;
+@property (weak, nonatomic) IBOutlet UITodoListView *todolistTableView;
 
 @property (weak, nonatomic) IBOutlet UIWeatherView *weatherView;
 
@@ -27,6 +29,8 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 
 @property (nonatomic) NSNumber* baseLine;
 
+@property (nonatomic) NSMutableArray* cellsNotOnCenterStatus;
+
 @end
 
 @implementation ViewController
@@ -34,16 +38,10 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.baseLine = @1;
+    self.cellsNotOnCenterStatus = [NSMutableArray array];
     self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:[NSDate date]]];
-    
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTodoListView:)];
-    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
-    tapGestureRecognizer.cancelsTouchesInView = NO;
-    //将触摸事件添加到当前view
-    [self.todolistTableView addGestureRecognizer:tapGestureRecognizer];
-    
     [self.addTodoView setDelegate:self];
-
+    [self.todolistTableView setTodoListViewDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,10 +61,22 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     return [self.todolist count];
 }
 
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+    [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    return rightUtilityButtons;
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *todoIdentifier = @"todoIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
+    cell.rightUtilityButtons = [self rightButtons];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.delegate = self;
     cell.textLabel.text = [NSString stringWithFormat:@"%ld.%@", indexPath.row + self.baseLine.integerValue, [[self.todolist objectAtIndex:indexPath.row] subject]];
     return cell;
 }
@@ -128,10 +138,30 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     }
 }
 
--(void)tapTodoListView:(UITapGestureRecognizer*)tap
+#pragma mark todoListViewDelegate
+-(void)touchInTodoListView
 {
     if (![self isShrink]) {
         [self shrinkAddTodo];
+    }
+    [self.cellsNotOnCenterStatus enumerateObjectsUsingBlock:^(SWTableViewCell* obj, NSUInteger idx, BOOL *stop) {
+        [obj hideUtilityButtonsAnimated:YES];
+    }];
+    [self.cellsNotOnCenterStatus removeAllObjects];
+}
+
+#pragma mark SWTableViewCellDelegate
+-(void)swipeableTableViewCell:(SWTableViewCell *)cell scrollingToState:(SWCellState)state
+{
+    if (state != kCellStateCenter) {
+        [self.cellsNotOnCenterStatus enumerateObjectsUsingBlock:^(SWTableViewCell* obj, NSUInteger idx, BOOL *stop) {
+            if (obj == cell) {
+                return;
+            }
+            [obj hideUtilityButtonsAnimated:YES];
+        }];
+        [self.cellsNotOnCenterStatus removeAllObjects];
+        [self.cellsNotOnCenterStatus addObject:cell];
     }
 }
 

@@ -25,6 +25,7 @@
 		E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461781B11CBF9003BBF7A /* SWTableViewCell.m */; };
 		E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */; };
 		E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */; };
+		E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461841B120B2C003BBF7A /* UITodoListView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonTapGestureRecognizer.m; path = third_party/SWTableViewCell/SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		E314617B1B11CBF9003BBF7A /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonView.h; path = third_party/SWTableViewCell/SWUtilityButtonView.h; sourceTree = "<group>"; };
 		E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonView.m; path = third_party/SWTableViewCell/SWUtilityButtonView.m; sourceTree = "<group>"; };
+		E31461831B120B2C003BBF7A /* UITodoListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITodoListView.h; path = UI/UITodoListView.h; sourceTree = "<group>"; };
+		E31461841B120B2C003BBF7A /* UITodoListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITodoListView.m; path = UI/UITodoListView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 				0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */,
 				0BA0DD0C1B0B5CB300522DFF /* UIAddTodoView.h */,
 				0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */,
+				E31461831B120B2C003BBF7A /* UITodoListView.h */,
+				E31461841B120B2C003BBF7A /* UITodoListView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 			files = (
 				0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */,
 				0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */,
+				E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */,
 				E314617D1B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				E314617F1B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m in Sources */,
 				E314617E1B11CBF9003BBF7A /* SWCellScrollView.m in Sources */,
