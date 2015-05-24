@@ -25,12 +25,16 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addTodoViewToTop;
 
+@property (nonatomic) NSNumber* baseLine;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.baseLine = @1;
+    
     self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:[NSDate date]]];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTodoListView:)];
@@ -64,7 +68,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *todoIdentifier = @"todoIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
-    cell.textLabel.text = [[self.todolist objectAtIndex:indexPath.row] subject];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld.%@", indexPath.row + self.baseLine.integerValue, [[self.todolist objectAtIndex:indexPath.row] subject]];
     return cell;
 }
 
@@ -115,8 +119,12 @@ static const CGFloat kAnimationTodoSpeed = .3f;
             Todo* todo = [[Todo alloc] init];
             todo.subject = self.addTodoView.addTodoTextField.text;
             [self.addTodoView.addTodoTextField setText:@""];
+            self.baseLine = @2;
+            [self.todolistTableView reloadData];
+            self.baseLine = @1;
             [self.todolist insertObject:todo atIndex:0];
             [self.todolistTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            
             [TodoLogic createNewTodo:todo finishCreate:nil];
         }];
     }
