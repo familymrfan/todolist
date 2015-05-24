@@ -87,7 +87,14 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     cell.rightUtilityButtons = [self rightButtons];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.delegate = self;
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld.%@", indexPath.row + self.baseLine.integerValue, [[self.todolist objectAtIndex:indexPath.row] subject]];
+    if ([[[self.todolist objectAtIndex:indexPath.row] status] isEqualToNumber:@(kTodoStatusDone)]) {
+        [cell.textLabel setTextColor:[UIColor grayColor]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.todolist objectAtIndex:indexPath.row] subject]];
+    } else {
+        [cell.textLabel setTextColor:[UIColor blackColor]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%ld.%@", indexPath.row + self.baseLine.integerValue, [[self.todolist objectAtIndex:indexPath.row] subject]];
+    }
+    
     return cell;
 }
 
@@ -179,9 +186,20 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 {
     if (index == 0) {
         NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
-        Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
-        todo.status = @(kTodoStatusDone);
-        [TodoLogic updateTodo:todo finish:nil];
+        if (cellIndexPath) {
+            Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+            todo.status = @(kTodoStatusDone);
+            [TodoLogic updateTodo:todo finish:nil];
+            [self.todolist removeObject:todo];
+            [self.todolist addObject:todo];
+            [self.todolistTableView reloadData];
+            [cell hideUtilityButtonsAnimated:NO];
+            [self.todolistTableView moveRowAtIndexPath:cellIndexPath toIndexPath:[NSIndexPath indexPathForItem:self.todolist.count - 1  inSection:0]];
+            [TodoLogic putOnAnotherTodoWithSrcTodoId:todo.rowId withDestTodoId:nil finish:^(NSNumber* destTodoId) {
+                [self.todolist removeObject:todo];
+                [self.todolist addObject:[TodoLogic queryTodoWithId:destTodoId]];
+            }];
+        }
     }
 }
 
@@ -189,11 +207,27 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 {
     if (index == 0) {
         NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
-        Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
-        [self.todolist removeObject:todo];
-        [self.todolistTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:cellIndexPath.row inSection:0]]withRowAnimation:UITableViewRowAnimationMiddle];
-        [TodoLogic deleteTodo:todo.rowId];
+        if (cellIndexPath) {
+            Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+            [self.todolist removeObject:todo];
+            [self.todolistTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:cellIndexPath.row inSection:0]]withRowAnimation:UITableViewRowAnimationMiddle];
+            [TodoLogic deleteTodo:todo.rowId];
+        }
     }
+}
+
+- (BOOL)swipeableTableViewCell:(SWTableViewCell *)cell canSwipeToState:(SWCellState)state
+{
+    if (state == kCellStateLeft) {
+        NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
+        if (cellIndexPath) {
+            Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+            if (todo.status.integerValue == kTodoStatusDone) {
+                return NO;
+            }
+        }
+    }
+    return YES;
 }
 
 @end

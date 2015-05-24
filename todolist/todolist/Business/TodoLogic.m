@@ -77,7 +77,7 @@
     }];
 }
 
-+ (void)putOnAnotherTodoWithSrcTodoId:(NSNumber *)srcTodoId withDestTodoId:(NSNumber *)destTodoId finish:(void(^)(id result))finish
++ (void)putOnAnotherTodoWithSrcTodoId:(NSNumber *)srcTodoId withDestTodoId:(NSNumber *)destTodoId finish:(void(^)(NSNumber* destTodoId))finish
 {
     [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         NSString* destTodoPriority = nil;
@@ -110,7 +110,7 @@
         [[DataLibrary saver] save:updateTodo];
         finishBlock(nil);
         if (finish) {
-            finish(nil);
+            finish(updateTodo.rowId);
         }
     }];
 }
