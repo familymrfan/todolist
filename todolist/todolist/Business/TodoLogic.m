@@ -143,4 +143,9 @@
     }];
 }
 
++ (void)deleteTodo:(NSNumber *)todoId
+{
+    [[DataLibrary saver] remove:[Todo class] rowId:todoId];
+}
+
 @end

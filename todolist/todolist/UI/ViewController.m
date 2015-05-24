@@ -175,4 +175,25 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     }
 }
 
+-(void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+{
+    if (index == 0) {
+        NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
+        Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+        todo.status = @(kTodoStatusDone);
+        [TodoLogic updateTodo:todo finish:nil];
+    }
+}
+
+-(void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    if (index == 0) {
+        NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
+        Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+        [self.todolist removeObject:todo];
+        [self.todolistTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:cellIndexPath.row inSection:0]]withRowAnimation:UITableViewRowAnimationMiddle];
+        [TodoLogic deleteTodo:todo.rowId];
+    }
+}
+
 @end

@@ -26,4 +26,7 @@
 // 更新待办
 + (void)updateTodo:(Todo *)todo finish:(void(^)(id result))finish;
 
+// 删除待办
++ (void)deleteTodo:(NSNumber *)todoId;
+
 @end

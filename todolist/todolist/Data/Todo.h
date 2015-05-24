@@ -11,8 +11,6 @@
 typedef enum : NSUInteger {
     kTodoStatusNoDo,
     kTodoStatusDone,
-    kTodoStatusDelete,
-    kTodoStatusStar
 } TodoStatus;
 
 @interface Todo : MrObject
