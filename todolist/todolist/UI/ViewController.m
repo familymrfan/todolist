@@ -34,7 +34,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.baseLine = @1;
-    
     self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:[NSDate date]]];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTodoListView:)];
@@ -124,7 +123,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
             self.baseLine = @1;
             [self.todolist insertObject:todo atIndex:0];
             [self.todolistTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-            
             [TodoLogic createNewTodo:todo finishCreate:nil];
         }];
     }
