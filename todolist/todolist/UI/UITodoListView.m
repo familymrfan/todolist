@@ -20,7 +20,7 @@
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
-    if (self.todoListViewDelegate && [self.todoListViewDelegate respondsToSelector:@selector(touchInTodoListView)]) {
+    if ([event allTouches] && self.todoListViewDelegate && [self.todoListViewDelegate respondsToSelector:@selector(touchInTodoListView)]) {
         [self.todoListViewDelegate touchInTodoListView];
     }
     return YES;

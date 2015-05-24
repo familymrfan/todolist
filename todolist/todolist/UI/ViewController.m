@@ -61,6 +61,15 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     return [self.todolist count];
 }
 
+- (NSArray *)leftButtons
+{
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
+                                                title:@"Done"];
+    return leftUtilityButtons;
+}
+
 - (NSArray *)rightButtons
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
@@ -74,6 +83,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *todoIdentifier = @"todoIdentifier";
     SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
+    cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.delegate = self;
