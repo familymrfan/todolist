@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMMoveTableView.h"
 
 @protocol UITodoListViewDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface UITodoListView : UITableView
+@interface UITodoListView : FMMoveTableView
 
 @property (nonatomic, weak) id<UITodoListViewDelegate> todoListViewDelegate;
 

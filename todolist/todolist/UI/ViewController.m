@@ -10,12 +10,12 @@
 #import "TodoLogic.h"
 #import "UIWeatherView.h"
 #import "UIAddTodoView.h"
-#import "SWTableViewCell.h"
+#import "FMMoveTableViewCell.h"
 #import "UITodoListView.h"
 
 static const CGFloat kAnimationTodoSpeed = .3f;
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAddTodoViewDelegate, SWTableViewCellDelegate, UITodoListViewDelegate>
+@interface ViewController () <FMMoveTableViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, UITodoListViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITodoListView *todolistTableView;
 
@@ -61,7 +61,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     return [self.todolist count];
 }
 
-- (NSArray *)leftButtons
+/*- (NSArray *)leftButtons
 {
     NSMutableArray *leftUtilityButtons = [NSMutableArray new];
     [leftUtilityButtons sw_addUtilityButtonWithColor:
@@ -77,16 +77,15 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
                                                 title:@"Delete"];
     return rightUtilityButtons;
-}
+}*/
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *todoIdentifier = @"todoIdentifier";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
-    cell.leftUtilityButtons = [self leftButtons];
-    cell.rightUtilityButtons = [self rightButtons];
+    FMMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
+    /*cell.leftUtilityButtons = [self leftButtons];
+    cell.rightUtilityButtons = [self rightButtons];*/
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.delegate = self;
     if ([[[self.todolist objectAtIndex:indexPath.row] status] isEqualToNumber:@(kTodoStatusDone)]) {
         [cell.textLabel setTextColor:[UIColor grayColor]];
         cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.todolist objectAtIndex:indexPath.row] subject]];
@@ -161,14 +160,31 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     if (![self isShrink]) {
         [self shrinkAddTodo];
     }
-    [self.cellsNotOnCenterStatus enumerateObjectsUsingBlock:^(SWTableViewCell* obj, NSUInteger idx, BOOL *stop) {
-        [obj hideUtilityButtonsAnimated:YES];
+}
+
+#pragma mark FMMoveTableViewDataSource
+- (void)moveTableView:(FMMoveTableView *)tableView moveRowFromIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    NSLog(@"from %ld -> to %ld", fromIndexPath.row, toIndexPath.row);
+    Todo* todo = [self.todolist objectAtIndex:fromIndexPath.row];
+    Todo* todoCopy = [todo deepCopy];
+    [self.todolist insertObject:todoCopy atIndex:toIndexPath.row + 1];
+    [self.todolist removeObject:todo];
+    [self.todolistTableView reloadData];
+    
+    NSNumber* destId = nil;
+    if (toIndexPath.row + 1 <= self.todolist.count -1) {
+        Todo* todoDest = [self.todolist objectAtIndex:toIndexPath.row + 1];
+        destId = todoDest.rowId;
+    }
+    
+    [TodoLogic putOnAnotherTodoWithSrcTodoId:todoCopy.rowId withDestTodoId:destId finish:^(NSNumber* destTodoId) {
+        [self.todolist replaceObjectAtIndex:[self.todolist indexOfObject:todoCopy] withObject:[TodoLogic queryTodoWithId:destTodoId]];
     }];
-    [self.cellsNotOnCenterStatus removeAllObjects];
 }
 
 #pragma mark SWTableViewCellDelegate
--(void)swipeableTableViewCell:(SWTableViewCell *)cell scrollingToState:(SWCellState)state
+/*-(void)swipeableTableViewCell:(SWTableViewCell *)cell scrollingToState:(SWCellState)state
 {
     if (state != kCellStateCenter) {
         [self.cellsNotOnCenterStatus enumerateObjectsUsingBlock:^(SWTableViewCell* obj, NSUInteger idx, BOOL *stop) {
@@ -228,6 +244,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
         }
     }
     return YES;
-}
+}*/
 
 @end
