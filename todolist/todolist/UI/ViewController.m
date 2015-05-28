@@ -86,14 +86,18 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     /*cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];*/
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    if ([[[self.todolist objectAtIndex:indexPath.row] status] isEqualToNumber:@(kTodoStatusDone)]) {
-        [cell.textLabel setTextColor:[UIColor grayColor]];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.todolist objectAtIndex:indexPath.row] subject]];
-    } else {
-        [cell.textLabel setTextColor:[UIColor blackColor]];
-        cell.textLabel.text = [NSString stringWithFormat:@"%ld.%@", indexPath.row + self.baseLine.integerValue, [[self.todolist objectAtIndex:indexPath.row] subject]];
-    }
     
+    if ([self.todolistTableView indexPathIsMovingIndexPath:indexPath]) {
+        [cell prepareForMove];
+    } else {
+        if ([[[self.todolist objectAtIndex:indexPath.row] status] isEqualToNumber:@(kTodoStatusDone)]) {
+            [cell.textLabel setTextColor:[UIColor grayColor]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.todolist objectAtIndex:indexPath.row] subject]];
+        } else {
+            [cell.textLabel setTextColor:[UIColor blackColor]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%ld.%@", indexPath.row + self.baseLine.integerValue, [[self.todolist objectAtIndex:indexPath.row] subject]];
+        }
+    }
     return cell;
 }
 
