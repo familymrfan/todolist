@@ -12,10 +12,11 @@
 #import "UIAddTodoView.h"
 #import "FMMoveTableViewCell.h"
 #import "UITodoListView.h"
+#import "TodoTableViewCell.h"
 
 static const CGFloat kAnimationTodoSpeed = .3f;
 
-@interface ViewController () <FMMoveTableViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, UITodoListViewDelegate>
+@interface ViewController () <UITodoListViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, TodoTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITodoListView *todolistTableView;
 
@@ -82,11 +83,11 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *todoIdentifier = @"todoIdentifier";
-    FMMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
+    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
     /*cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];*/
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
+    [cell setDelegate:self];
     if ([self.todolistTableView indexPathIsMovingIndexPath:indexPath]) {
         [cell prepareForMove];
     } else {
@@ -185,6 +186,49 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     [TodoLogic putOnAnotherTodoWithSrcTodoId:todoCopy.rowId withDestTodoId:destId finish:^(NSNumber* destTodoId) {
         [self.todolist replaceObjectAtIndex:[self.todolist indexOfObject:todoCopy] withObject:[TodoLogic queryTodoWithId:destTodoId]];
     }];
+}
+
+#pragma mark TodoTableViewCellDelegate
+- (void)todoRightDoubleSwipe:(TodoTableViewCell *)cell
+{
+    NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
+    if (cellIndexPath) {
+        Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+        if (todo.status.integerValue == kTodoStatusNoDo) {
+            todo.status = @(kTodoStatusDone);
+            [TodoLogic updateTodo:todo finish:nil];
+            [self.todolist removeObject:todo];
+            [self.todolist addObject:todo];
+            [self.todolistTableView reloadData];
+            [self.todolistTableView moveRowAtIndexPath:cellIndexPath toIndexPath:[NSIndexPath indexPathForItem:self.todolist.count - 1  inSection:0]];
+            [TodoLogic putOnAnotherTodoWithSrcTodoId:todo.rowId withDestTodoId:nil finish:^(NSNumber* destTodoId) {
+                [self.todolist removeObject:todo];
+                [self.todolist addObject:[TodoLogic queryTodoWithId:destTodoId]];
+            }];
+        } else {
+            [self.todolist removeObject:todo];
+            [self.todolistTableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [TodoLogic deleteTodo:todo.rowId];
+        }
+    }
+}
+
+- (void)todoLeftSwipe:(TodoTableViewCell *)cell
+{
+    NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
+    if (cellIndexPath) {
+        Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
+        todo.status = @(kTodoStatusNoDo);
+        [TodoLogic updateTodo:todo finish:nil];
+        [self.todolist removeObject:todo];
+        [self.todolist insertObject:todo atIndex:0];
+        [self.todolistTableView reloadData];
+        [self.todolistTableView moveRowAtIndexPath:cellIndexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        [TodoLogic putOnAnotherTodoWithSrcTodoId:todo.rowId withDestTodoId:nil finish:^(NSNumber* destTodoId) {
+            [self.todolist removeObject:todo];
+            [self.todolist insertObject:[TodoLogic queryTodoWithId:destTodoId] atIndex:0];
+        }];
+    }
 }
 
 #pragma mark SWTableViewCellDelegate

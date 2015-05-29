@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B13F0C31B18103400509F2A /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F0C21B18103400509F2A /* TodoTableViewCell.m */; };
+		0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */; };
 		0B84C9241AE375EB00A93AA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9231AE375EB00A93AA0 /* main.m */; };
 		0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9261AE375EB00A93AA0 /* AppDelegate.m */; };
 		0B84C9301AE375EB00A93AA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C92E1AE375EB00A93AA0 /* Main.storyboard */; };
@@ -56,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B13F0C11B18103400509F2A /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoTableViewCell.h; path = UI/TodoTableViewCell.h; sourceTree = "<group>"; };
+		0B13F0C21B18103400509F2A /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoTableViewCell.m; path = UI/TodoTableViewCell.m; sourceTree = "<group>"; };
+		0B13F0CA1B18578200509F2A /* UIErasureGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIErasureGestureRecognizer.h; path = Lab/UIErasureGestureRecognizer.h; sourceTree = "<group>"; };
+		0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIErasureGestureRecognizer.m; path = Lab/UIErasureGestureRecognizer.m; sourceTree = "<group>"; };
 		0B84C91E1AE375EB00A93AA0 /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B84C9221AE375EB00A93AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B84C9231AE375EB00A93AA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B13F0C61B18310C00509F2A /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				0B13F0CA1B18578200509F2A /* UIErasureGestureRecognizer.h */,
+				0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */,
+			);
+			name = Lab;
+			sourceTree = "<group>";
+		};
 		0B84C9151AE375EB00A93AA0 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +158,7 @@
 		0B84C9201AE375EB00A93AA0 /* todolist */ = {
 			isa = PBXGroup;
 			children = (
+				0B13F0C61B18310C00509F2A /* Lab */,
 				0BC4D3A91AECDAEE008D40A2 /* Business */,
 				0BC4D3A21AECD15E008D40A2 /* Data */,
 				0BC4D39E1AECD0BF008D40A2 /* UI */,
@@ -224,6 +240,8 @@
 				0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */,
 				E31461831B120B2C003BBF7A /* UITodoListView.h */,
 				E31461841B120B2C003BBF7A /* UITodoListView.m */,
+				0B13F0C11B18103400509F2A /* TodoTableViewCell.h */,
+				0B13F0C21B18103400509F2A /* TodoTableViewCell.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -389,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */,
+				0B13F0C31B18103400509F2A /* TodoTableViewCell.m in Sources */,
 				0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */,
 				E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */,
 				E314617D1B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m in Sources */,
@@ -402,6 +421,7 @@
 				E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */,
 				0BA0DD551B14A21400522DFF /* FMMoveTableView.m in Sources */,
 				0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */,
+				0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */,
 				E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */,
 			);
@@ -479,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -515,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FMMoveTableView.h"
 
-@protocol UITodoListViewDelegate <NSObject>
+@protocol UITodoListViewDelegate <FMMoveTableViewDelegate>
 
 @optional
 - (void)touchInTodoListView;
