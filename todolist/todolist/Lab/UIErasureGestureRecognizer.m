@@ -32,7 +32,7 @@
     
     NSLog(@"distance %f", distance);
     
-    if (fabsf(distance) < 20) {
+    if (fabs(distance) < 20) {
         return ;
     }
     

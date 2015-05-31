@@ -16,7 +16,7 @@
 
 static const CGFloat kAnimationTodoSpeed = .3f;
 
-@interface ViewController () <UITodoListViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, TodoTableViewCellDelegate>
+@interface ViewController () <UITodoListViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, TodoTableViewCellDelegate, UIWeatherViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITodoListView *todolistTableView;
 
@@ -42,7 +42,13 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     self.cellsNotOnCenterStatus = [NSMutableArray array];
     self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:[NSDate date]]];
     [self.addTodoView setDelegate:self];
+    [self.weatherView setDelegate:self];
     [self.todolistTableView setTodoListViewDelegate:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.weatherView refreshDate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -231,6 +237,19 @@ static const CGFloat kAnimationTodoSpeed = .3f;
             }];
         }
     }
+}
+
+#pragma mark UIWeatherViewDelegate
+- (void)preDay:(NSDate *)date
+{
+    self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:date]];
+    [self.todolistTableView reloadData];
+}
+
+-(void)lastDay:(NSDate *)date
+{
+    self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:date]];
+    [self.todolistTableView reloadData];
 }
 
 #pragma mark SWTableViewCellDelegate
