@@ -218,16 +218,18 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
     if (cellIndexPath) {
         Todo* todo = [self.todolist objectAtIndex:cellIndexPath.row];
-        todo.status = @(kTodoStatusNoDo);
-        [TodoLogic updateTodo:todo finish:nil];
-        [self.todolist removeObject:todo];
-        [self.todolist insertObject:todo atIndex:0];
-        [self.todolistTableView reloadData];
-        [self.todolistTableView moveRowAtIndexPath:cellIndexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        [TodoLogic putOnAnotherTodoWithSrcTodoId:todo.rowId withDestTodoId:nil finish:^(NSNumber* destTodoId) {
+        if (todo.status.integerValue == kTodoStatusDone) {
+            todo.status = @(kTodoStatusNoDo);
+            [TodoLogic updateTodo:todo finish:nil];
             [self.todolist removeObject:todo];
-            [self.todolist insertObject:[TodoLogic queryTodoWithId:destTodoId] atIndex:0];
-        }];
+            [self.todolist insertObject:todo atIndex:0];
+            [self.todolistTableView reloadData];
+            [self.todolistTableView moveRowAtIndexPath:cellIndexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+            [TodoLogic putOnAnotherTodoWithSrcTodoId:todo.rowId withDestTodoId:nil finish:^(NSNumber* destTodoId) {
+                [self.todolist removeObject:todo];
+                [self.todolist insertObject:[TodoLogic queryTodoWithId:destTodoId] atIndex:0];
+            }];
+        }
     }
 }
 
