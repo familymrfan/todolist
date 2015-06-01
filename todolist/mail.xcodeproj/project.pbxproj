@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0B13F0C31B18103400509F2A /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F0C21B18103400509F2A /* TodoTableViewCell.m */; };
 		0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */; };
+		0B13F0DC1B1BE1D600509F2A /* Mr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC4D39A1AECC9F2008D40A2 /* Mr.framework */; };
+		0B13F0DD1B1BE1D600509F2A /* Mr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC4D39A1AECC9F2008D40A2 /* Mr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0B84C9241AE375EB00A93AA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9231AE375EB00A93AA0 /* main.m */; };
 		0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9261AE375EB00A93AA0 /* AppDelegate.m */; };
 		0B84C9301AE375EB00A93AA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C92E1AE375EB00A93AA0 /* Main.storyboard */; };
 		0B84C9321AE375EB00A93AA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C9311AE375EB00A93AA0 /* Images.xcassets */; };
 		0B84C9351AE375EB00A93AA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C9331AE375EB00A93AA0 /* LaunchScreen.xib */; };
-		0B84C9411AE375EB00A93AA0 /* todolistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9401AE375EB00A93AA0 /* todolistTests.m */; };
 		0BA0DD091B0B5C7800522DFF /* UIWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */; };
 		0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */; };
 		0BA0DD551B14A21400522DFF /* FMMoveTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD521B14A21400522DFF /* FMMoveTableView.m */; };
@@ -34,12 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0B84C93B1AE375EB00A93AA0 /* PBXContainerItemProxy */ = {
+		0B13F0DE1B1BE1D600509F2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0B84C9161AE375EB00A93AA0 /* Project object */;
+			containerPortal = 0BC4D3931AECC9F1008D40A2 /* Mr.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 0B84C91D1AE375EB00A93AA0;
-			remoteInfo = todolist;
+			remoteGlobalIDString = E3466C891AB4505F0071CE9C;
+			remoteInfo = Mr;
 		};
 		0BC4D3991AECC9F2008D40A2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -57,12 +58,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0B13F0E01B1BE1D600509F2A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0B13F0DD1B1BE1D600509F2A /* Mr.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0B13F0C11B18103400509F2A /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoTableViewCell.h; path = UI/TodoTableViewCell.h; sourceTree = "<group>"; };
 		0B13F0C21B18103400509F2A /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoTableViewCell.m; path = UI/TodoTableViewCell.m; sourceTree = "<group>"; };
 		0B13F0CA1B18578200509F2A /* UIErasureGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIErasureGestureRecognizer.h; path = Lab/UIErasureGestureRecognizer.h; sourceTree = "<group>"; };
 		0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIErasureGestureRecognizer.m; path = Lab/UIErasureGestureRecognizer.m; sourceTree = "<group>"; };
-		0B84C91E1AE375EB00A93AA0 /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B84C91E1AE375EB00A93AA0 /* mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B84C9221AE375EB00A93AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B84C9231AE375EB00A93AA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B84C9251AE375EB00A93AA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,7 +85,6 @@
 		0B84C92F1AE375EB00A93AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B84C9311AE375EB00A93AA0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0B84C9341AE375EB00A93AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0B84C93A1AE375EB00A93AA0 /* todolistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todolistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B84C93F1AE375EB00A93AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B84C9401AE375EB00A93AA0 /* todolistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todolistTests.m; sourceTree = "<group>"; };
 		0BA0DD071B0B5C7800522DFF /* UIWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWeatherView.h; path = UI/UIWeatherView.h; sourceTree = "<group>"; };
@@ -112,14 +126,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BA0DD5A1B16201400522DFF /* QuartzCore.framework in Frameworks */,
+				0B13F0DC1B1BE1D600509F2A /* Mr.framework in Frameworks */,
 				0BC4D39D1AECCA1A008D40A2 /* Mr.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0B84C9371AE375EB00A93AA0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +157,7 @@
 		0B84C91F1AE375EB00A93AA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0B84C91E1AE375EB00A93AA0 /* todolist.app */,
-				0B84C93A1AE375EB00A93AA0 /* todolistTests.xctest */,
+				0B84C91E1AE375EB00A93AA0 /* mail.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,40 +293,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0B84C91D1AE375EB00A93AA0 /* todolist */ = {
+		0B84C91D1AE375EB00A93AA0 /* mail */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0B84C9441AE375EB00A93AA0 /* Build configuration list for PBXNativeTarget "todolist" */;
+			buildConfigurationList = 0B84C9441AE375EB00A93AA0 /* Build configuration list for PBXNativeTarget "mail" */;
 			buildPhases = (
 				0B84C91A1AE375EB00A93AA0 /* Sources */,
 				0B84C91B1AE375EB00A93AA0 /* Frameworks */,
 				0B84C91C1AE375EB00A93AA0 /* Resources */,
+				0B13F0E01B1BE1D600509F2A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0B13F0DF1B1BE1D600509F2A /* PBXTargetDependency */,
 			);
-			name = todolist;
+			name = mail;
 			productName = todolist;
-			productReference = 0B84C91E1AE375EB00A93AA0 /* todolist.app */;
+			productReference = 0B84C91E1AE375EB00A93AA0 /* mail.app */;
 			productType = "com.apple.product-type.application";
-		};
-		0B84C9391AE375EB00A93AA0 /* todolistTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0B84C9471AE375EB00A93AA0 /* Build configuration list for PBXNativeTarget "todolistTests" */;
-			buildPhases = (
-				0B84C9361AE375EB00A93AA0 /* Sources */,
-				0B84C9371AE375EB00A93AA0 /* Frameworks */,
-				0B84C9381AE375EB00A93AA0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0B84C93C1AE375EB00A93AA0 /* PBXTargetDependency */,
-			);
-			name = todolistTests;
-			productName = todolistTests;
-			productReference = 0B84C93A1AE375EB00A93AA0 /* todolistTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -333,13 +324,9 @@
 					0B84C91D1AE375EB00A93AA0 = {
 						CreatedOnToolsVersion = 6.2;
 					};
-					0B84C9391AE375EB00A93AA0 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 0B84C91D1AE375EB00A93AA0;
-					};
 				};
 			};
-			buildConfigurationList = 0B84C9191AE375EB00A93AA0 /* Build configuration list for PBXProject "todolist" */;
+			buildConfigurationList = 0B84C9191AE375EB00A93AA0 /* Build configuration list for PBXProject "mail" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -358,8 +345,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				0B84C91D1AE375EB00A93AA0 /* todolist */,
-				0B84C9391AE375EB00A93AA0 /* todolistTests */,
+				0B84C91D1AE375EB00A93AA0 /* mail */,
 			);
 		};
 /* End PBXProject section */
@@ -392,13 +378,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0B84C9381AE375EB00A93AA0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -427,21 +406,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0B84C9361AE375EB00A93AA0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0B84C9411AE375EB00A93AA0 /* todolistTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0B84C93C1AE375EB00A93AA0 /* PBXTargetDependency */ = {
+		0B13F0DF1B1BE1D600509F2A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0B84C91D1AE375EB00A93AA0 /* todolist */;
-			targetProxy = 0B84C93B1AE375EB00A93AA0 /* PBXContainerItemProxy */;
+			name = Mr;
+			targetProxy = 0B13F0DE1B1BE1D600509F2A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -547,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/todolist/todolist.pch";
 				HEADER_SEARCH_PATHS = (
@@ -555,9 +527,9 @@
 					"$(PROJECT_DIR)/third_party/Mr./**",
 				);
 				INFOPLIST_FILE = todolist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = mail;
 			};
 			name = Debug;
 		};
@@ -565,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/todolist/todolist.pch";
 				HEADER_SEARCH_PATHS = (
@@ -573,60 +546,16 @@
 					"$(PROJECT_DIR)/third_party/Mr./**",
 				);
 				INFOPLIST_FILE = todolist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		0B84C9481AE375EB00A93AA0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/third_party/Mr./**",
-				);
-				INFOPLIST_FILE = todolistTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/todolist.app/todolist";
-			};
-			name = Debug;
-		};
-		0B84C9491AE375EB00A93AA0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/third_party/Mr./**",
-				);
-				INFOPLIST_FILE = todolistTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/todolist.app/todolist";
+				PRODUCT_NAME = mail;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0B84C9191AE375EB00A93AA0 /* Build configuration list for PBXProject "todolist" */ = {
+		0B84C9191AE375EB00A93AA0 /* Build configuration list for PBXProject "mail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0B84C9421AE375EB00A93AA0 /* Debug */,
@@ -635,20 +564,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0B84C9441AE375EB00A93AA0 /* Build configuration list for PBXNativeTarget "todolist" */ = {
+		0B84C9441AE375EB00A93AA0 /* Build configuration list for PBXNativeTarget "mail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0B84C9451AE375EB00A93AA0 /* Debug */,
 				0B84C9461AE375EB00A93AA0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0B84C9471AE375EB00A93AA0 /* Build configuration list for PBXNativeTarget "todolistTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0B84C9481AE375EB00A93AA0 /* Debug */,
-				0B84C9491AE375EB00A93AA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
