@@ -68,6 +68,11 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     return [self.todolist count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
+}
+
 /*- (NSArray *)leftButtons
 {
     NSMutableArray *leftUtilityButtons = [NSMutableArray new];
@@ -111,11 +116,12 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 // 展开添加待办
 - (void)expandAddTodo
 {
+    
     self.addTodoViewToTop.constant += self.weatherView.frame.size.height;
     [UIView animateWithDuration:kAnimationTodoSpeed animations:^{
         [self.addTodoView layoutIfNeeded];
+        [self.addTodoView.addTodoTextField becomeFirstResponder];
     }];
-    [self.addTodoView.addTodoTextField becomeFirstResponder];
     [self.weatherView.addTodoButton setTitle:@"-" forState:UIControlStateNormal];
 }
 
@@ -177,15 +183,19 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 - (void)moveTableView:(FMMoveTableView *)tableView moveRowFromIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
     NSLog(@"from %ld -> to %ld", fromIndexPath.row, toIndexPath.row);
+    NSUInteger toindex = toIndexPath.row;
+    if (fromIndexPath.row < toIndexPath.row) {
+        toindex += 1;
+    }
     Todo* todo = [self.todolist objectAtIndex:fromIndexPath.row];
     Todo* todoCopy = [todo deepCopy];
-    [self.todolist insertObject:todoCopy atIndex:toIndexPath.row + 1];
+    [self.todolist insertObject:todoCopy atIndex:toindex];
     [self.todolist removeObject:todo];
     [self.todolistTableView reloadData];
     
     NSNumber* destId = nil;
     if (toIndexPath.row + 1 <= self.todolist.count -1) {
-        Todo* todoDest = [self.todolist objectAtIndex:toIndexPath.row + 1];
+        Todo* todoDest = [self.todolist objectAtIndex:toindex];
         destId = todoDest.rowId;
     }
     
@@ -195,7 +205,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 }
 
 #pragma mark TodoTableViewCellDelegate
-- (void)todoRightDoubleSwipe:(TodoTableViewCell *)cell
+- (void)todoRightSwipe:(TodoTableViewCell *)cell
 {
     NSIndexPath* cellIndexPath = [self.todolistTableView indexPathForCell:cell];
     if (cellIndexPath) {
@@ -235,6 +245,10 @@ static const CGFloat kAnimationTodoSpeed = .3f;
                 [self.todolist removeObject:todo];
                 [self.todolist insertObject:[TodoLogic queryTodoWithId:destTodoId] atIndex:0];
             }];
+        } else {
+            [self.todolist removeObject:todo];
+            [self.todolistTableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [TodoLogic deleteTodo:todo.rowId];
         }
     }
 }

@@ -40,7 +40,14 @@
     [self addGestureRecognizer:swipe];
 }
 
-- (void)reportTodoDone
+- (void)reportRightSwipe
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(todoRightSwipe:)]) {
+        [self.delegate todoRightSwipe:self];
+    }
+}
+
+- (void)reportRightDoubleSwipe
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(todoRightDoubleSwipe:)]) {
         self.timerGesture = nil;
@@ -59,11 +66,12 @@
 - (void)swipeTriger:(UISwipeGestureRecognizer *)gesture
 {
     if ([gesture direction] == UISwipeGestureRecognizerDirectionRight) {
+        [self reportRightSwipe];
         self.toRightSwipCount++;
         if (self.timerGesture == nil) {
             self.timerGesture = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(swipeTimerTriger:) userInfo:nil repeats:NO];
         } else if (self.toRightSwipCount == 2) {
-            [self reportTodoDone];
+            [self reportRightDoubleSwipe];
         }
     } else if ([gesture direction] == UISwipeGestureRecognizerDirectionLeft) {
         [self reporttodoLeftSwipe];

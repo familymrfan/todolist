@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -89,9 +89,13 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sf-z3-ogF">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <variation key="widthClass=compact" fixedFrame="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="39"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="addTodo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OTH-Iw-cRe"/>
                                                 </connections>
@@ -99,7 +103,7 @@
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pci-lk-Brt" userLabel="Date">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="119" id="k9N-Gb-0qp"/>
+                                                    <constraint firstAttribute="width" constant="180" id="k9N-Gb-0qp"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,9 +124,7 @@
                                         <constraints>
                                             <constraint firstItem="Pci-lk-Brt" firstAttribute="centerX" secondItem="BxU-9P-Bc7" secondAttribute="centerX" id="HDF-j3-q2k"/>
                                             <constraint firstItem="Pci-lk-Brt" firstAttribute="top" secondItem="BxU-9P-Bc7" secondAttribute="top" constant="9" id="L7D-Ak-t4W"/>
-                                            <constraint firstItem="0sf-z3-ogF" firstAttribute="leading" secondItem="BxU-9P-Bc7" secondAttribute="leadingMargin" id="SS8-ep-jVE"/>
                                             <constraint firstAttribute="height" constant="40" id="gwf-N2-oi7"/>
-                                            <constraint firstItem="0sf-z3-ogF" firstAttribute="baseline" secondItem="Pci-lk-Brt" secondAttribute="baseline" id="tdi-Fx-NYb"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
@@ -131,8 +133,6 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="gwf-N2-oi7"/>
-                                                <exclude reference="SS8-ep-jVE"/>
-                                                <exclude reference="tdi-Fx-NYb"/>
                                                 <exclude reference="HDF-j3-q2k"/>
                                                 <exclude reference="L7D-Ak-t4W"/>
                                             </mask>
@@ -144,8 +144,6 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="gwf-N2-oi7"/>
-                                                <include reference="SS8-ep-jVE"/>
-                                                <include reference="tdi-Fx-NYb"/>
                                                 <include reference="HDF-j3-q2k"/>
                                                 <include reference="L7D-Ak-t4W"/>
                                             </mask>
@@ -214,9 +212,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="y30-ZR-RdX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="j5i-rn-tyF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="y30-ZR-RdX" secondAttribute="trailing" constant="-16" id="pnJ-CJ-0Dx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y30-ZR-RdX" secondAttribute="trailing" constant="-8" id="pnJ-CJ-0Dx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y30-ZR-RdX" secondAttribute="bottom" id="rB7-xB-jdV"/>
-                            <constraint firstItem="y30-ZR-RdX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ucY-Vp-Kge"/>
+                            <constraint firstItem="y30-ZR-RdX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="ucY-Vp-Kge"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">

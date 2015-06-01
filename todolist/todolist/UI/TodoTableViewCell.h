@@ -14,6 +14,7 @@
 
 @optional
 
+- (void)todoRightSwipe:(TodoTableViewCell *)cell;
 - (void)todoRightDoubleSwipe:(TodoTableViewCell *)cell;
 - (void)todoLeftSwipe:(TodoTableViewCell *)cell;
 
