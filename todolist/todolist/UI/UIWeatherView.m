@@ -39,14 +39,14 @@
 
 - (void)swipeTriger:(UISwipeGestureRecognizer *)gesture
 {
-    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
+    if (gesture.direction == UISwipeGestureRecognizerDirectionRight) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(preDay:)]) {
             NSDate* preDay = [[NSDate alloc] initWithTimeInterval:-60*60*24 sinceDate:self.currentDate];
             self.currentDate = preDay;
             [self.dateLabel setText:[self.dateFormat stringFromDate:self.currentDate]];
             [self.delegate preDay:self.currentDate];;
         }
-    } else if (gesture.direction == UISwipeGestureRecognizerDirectionRight) {
+    } else if (gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(preDay:)]) {
             NSDate* lastDay = [[NSDate alloc] initWithTimeInterval:60*60*24 sinceDate:self.currentDate];
             self.currentDate = lastDay;
