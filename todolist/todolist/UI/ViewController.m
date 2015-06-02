@@ -13,6 +13,7 @@
 #import "FMMoveTableViewCell.h"
 #import "UITodoListView.h"
 #import "TodoTableViewCell.h"
+#import "UITodoDetailView.h"
 
 static const CGFloat kAnimationTodoSpeed = .3f;
 
@@ -23,6 +24,10 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 @property (weak, nonatomic) IBOutlet UIWeatherView *weatherView;
 
 @property (weak, nonatomic) IBOutlet UIAddTodoView *addTodoView;
+
+@property (weak, nonatomic) IBOutlet UITodoDetailView *tododetailView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tododetailViewToLeft;
 
 @property (nonatomic) NSMutableArray* todolist;
 
@@ -44,6 +49,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     [self.addTodoView setDelegate:self];
     [self.weatherView setDelegate:self];
     [self.todolistTableView setTodoListViewDelegate:self];
+    self.tododetailViewToLeft.constant = self.view.frame.size.width;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -97,7 +103,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
     /*cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];*/
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setDelegate:self];
     if ([self.todolistTableView indexPathIsMovingIndexPath:indexPath]) {
         [cell prepareForMove];
@@ -113,13 +118,19 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.tododetailView.todoDetailViewStatus == kTodoDetailViewHideStatus) {
+        [self.tododetailView show];
+    }
+}
+
 // 展开添加待办
 - (void)expandAddTodo
 {
-    
     self.addTodoViewToTop.constant += self.weatherView.frame.size.height;
     [UIView animateWithDuration:kAnimationTodoSpeed animations:^{
-        [self.addTodoView layoutIfNeeded];
+        [self.view layoutIfNeeded];
         [self.addTodoView.addTodoTextField becomeFirstResponder];
     }];
     [self.weatherView.addTodoButton setTitle:@"-" forState:UIControlStateNormal];
@@ -130,7 +141,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 {
     self.addTodoViewToTop.constant = 0;
     [UIView animateWithDuration:kAnimationTodoSpeed animations:^{
-        [self.addTodoView layoutIfNeeded];
+        [self.view layoutIfNeeded];
     }];
     [self.addTodoView.addTodoTextField resignFirstResponder];
     [self.weatherView.addTodoButton setTitle:@"+" forState:UIControlStateNormal];
@@ -172,11 +183,13 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 }
 
 #pragma mark todoListViewDelegate
--(void)touchInTodoListView
+-(BOOL)touchInTodoListView:(TodoTableViewCell *)cell
 {
     if (![self isShrink]) {
         [self shrinkAddTodo];
     }
+    [self.tododetailView hide];
+    return YES;
 }
 
 #pragma mark FMMoveTableViewDataSource

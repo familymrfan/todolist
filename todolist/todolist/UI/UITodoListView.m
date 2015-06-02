@@ -7,6 +7,7 @@
 //
 
 #import "UITodoListView.h"
+#import "TodoTableViewCell.h"
 
 @implementation UITodoListView
 
@@ -20,8 +21,15 @@
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
-    if ([event allTouches] && self.todoListViewDelegate && [self.todoListViewDelegate respondsToSelector:@selector(touchInTodoListView)]) {
-        [self.todoListViewDelegate touchInTodoListView];
+    if ([event allTouches] && self.todoListViewDelegate && [self.todoListViewDelegate respondsToSelector:@selector(touchInTodoListView:)]) {
+        
+        TodoTableViewCell* cell = nil;
+        NSIndexPath* indexPath = [self indexPathForRowAtPoint:point];
+        if (indexPath) {
+            cell = (TodoTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+        }
+        
+        return [self.todoListViewDelegate touchInTodoListView:cell];
     }
     return YES;
 }

@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoIdentifier" id="xTi-lH-f7e" customClass="TodoTableViewCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="todoIdentifier" id="xTi-lH-f7e" customClass="TodoTableViewCell">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xTi-lH-f7e" id="RbO-rT-Zra">
@@ -45,9 +45,6 @@
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="5" y="5" width="358" height="30"/>
-                                                </variation>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,8 +67,7 @@
                                                 <exclude reference="wR9-gL-oFw"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="16" y="8" width="368" height="40"/>
+                                        <variation key="widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="f7f-eN-Nah"/>
                                             </mask>
@@ -116,8 +112,7 @@
                                                         <exclude reference="k9N-Gb-0qp"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="94" y="9" width="180" height="21"/>
+                                                <variation key="widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="k9N-Gb-0qp"/>
                                                     </mask>
@@ -212,33 +207,64 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKX-So-wE3" userLabel="tododetail" customClass="UITodoDetailView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="DYo-Gv-9TO"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DYo-Gv-9TO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="DYo-Gv-9TO"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="tododetailViewToLeft" destination="rfn-Jr-eBU" id="xrG-Vo-30v"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="bottom" constant="8" id="5mZ-it-qXW"/>
                             <constraint firstItem="y30-ZR-RdX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7Nd-5D-zoW"/>
                             <constraint firstAttribute="trailing" secondItem="y30-ZR-RdX" secondAttribute="trailing" id="K6J-3I-lPS"/>
+                            <constraint firstItem="aKX-So-wE3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="dxe-Ic-M0D"/>
                             <constraint firstItem="y30-ZR-RdX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="j5i-rn-tyF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y30-ZR-RdX" secondAttribute="bottom" id="rB7-xB-jdV"/>
+                            <constraint firstItem="aKX-So-wE3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="rfn-Jr-eBU"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="y30-ZR-RdX"/>
+                                <exclude reference="aKX-So-wE3"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="7Nd-5D-zoW"/>
                                 <exclude reference="K6J-3I-lPS"/>
                                 <exclude reference="j5i-rn-tyF"/>
+                                <exclude reference="dxe-Ic-M0D"/>
+                                <exclude reference="rfn-Jr-eBU"/>
+                                <exclude reference="5mZ-it-qXW"/>
                                 <exclude reference="rB7-xB-jdV"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="y30-ZR-RdX"/>
+                                <include reference="aKX-So-wE3"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="7Nd-5D-zoW"/>
                                 <include reference="K6J-3I-lPS"/>
                                 <include reference="j5i-rn-tyF"/>
+                                <include reference="dxe-Ic-M0D"/>
+                                <include reference="rfn-Jr-eBU"/>
+                                <include reference="5mZ-it-qXW"/>
                                 <include reference="rB7-xB-jdV"/>
                             </mask>
                         </variation>
@@ -246,13 +272,15 @@
                     <connections>
                         <outlet property="addTodoView" destination="NxM-u0-1sb" id="JdG-Bk-xWY"/>
                         <outlet property="addTodoViewToTop" destination="rqn-Ks-G7Q" id="Ncs-Vd-yqe"/>
+                        <outlet property="tododetailView" destination="aKX-So-wE3" id="t90-yw-VqQ"/>
+                        <outlet property="tododetailViewToLeft" destination="rfn-Jr-eBU" id="WtS-kl-LMr"/>
                         <outlet property="todolistTableView" destination="772-zp-1qm" id="9AE-rQ-TeP"/>
                         <outlet property="weatherView" destination="BxU-9P-Bc7" id="7ug-bM-LCt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309" y="250"/>
+            <point key="canvasLocation" x="478" y="176"/>
         </scene>
     </scenes>
 </document>

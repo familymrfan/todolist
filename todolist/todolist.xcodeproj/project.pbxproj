@@ -31,6 +31,7 @@
 		E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */; };
 		E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */; };
 		E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461841B120B2C003BBF7A /* UITodoListView.m */; };
+		E38C4F991B1DDD3E00DD3FFE /* UITodoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E38C4F981B1DDD3E00DD3FFE /* UITodoDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonView.m; path = third_party/SWTableViewCell/SWUtilityButtonView.m; sourceTree = "<group>"; };
 		E31461831B120B2C003BBF7A /* UITodoListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITodoListView.h; path = UI/UITodoListView.h; sourceTree = "<group>"; };
 		E31461841B120B2C003BBF7A /* UITodoListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITodoListView.m; path = UI/UITodoListView.m; sourceTree = "<group>"; };
+		E38C4F971B1DDD3E00DD3FFE /* UITodoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITodoDetailView.h; path = UI/UITodoDetailView.h; sourceTree = "<group>"; };
+		E38C4F981B1DDD3E00DD3FFE /* UITodoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITodoDetailView.m; path = UI/UITodoDetailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 				E31461841B120B2C003BBF7A /* UITodoListView.m */,
 				0B13F0C11B18103400509F2A /* TodoTableViewCell.h */,
 				0B13F0C21B18103400509F2A /* TodoTableViewCell.m */,
+				E38C4F971B1DDD3E00DD3FFE /* UITodoDetailView.h */,
+				E38C4F981B1DDD3E00DD3FFE /* UITodoDetailView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */,
 				0B13F0C31B18103400509F2A /* TodoTableViewCell.m in Sources */,
 				0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */,
+				E38C4F991B1DDD3E00DD3FFE /* UITodoDetailView.m in Sources */,
 				E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */,
 				E314617D1B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				E314617F1B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m in Sources */,

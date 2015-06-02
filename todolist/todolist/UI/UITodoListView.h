@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "FMMoveTableView.h"
 
+@class UITableViewCell;
 @protocol UITodoListViewDelegate <FMMoveTableViewDelegate>
 
 @optional
-- (void)touchInTodoListView;
+- (BOOL)touchInTodoListView:(UITableViewCell *)cell;
 
 @end
 
