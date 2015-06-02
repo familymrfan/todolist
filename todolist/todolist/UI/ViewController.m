@@ -234,10 +234,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
                 [self.todolist removeObject:todo];
                 [self.todolist addObject:[TodoLogic queryTodoWithId:destTodoId]];
             }];
-        } else {
-            [self.todolist removeObject:todo];
-            [self.todolistTableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [TodoLogic deleteTodo:todo.rowId];
         }
     }
 }
@@ -258,10 +254,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
                 [self.todolist removeObject:todo];
                 [self.todolist insertObject:[TodoLogic queryTodoWithId:destTodoId] atIndex:0];
             }];
-        } else {
-            [self.todolist removeObject:todo];
-            [self.todolistTableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [TodoLogic deleteTodo:todo.rowId];
         }
     }
 }
