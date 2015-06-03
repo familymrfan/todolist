@@ -7,13 +7,20 @@
 //
 
 #import "UITodoDetailView.h"
+#import "TodoLogic.h"
 
 static CGFloat kLeftSpace = 100.;
 
-@interface UITodoDetailView () <UIGestureRecognizerDelegate>
+@interface UITodoDetailView () <UIGestureRecognizerDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tododetailViewToLeft;
+
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+
+@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+
 @property (nonatomic, assign) CGFloat constant;
+@property (nonatomic) Todo* todo;
 
 @end
 
@@ -27,6 +34,11 @@ static CGFloat kLeftSpace = 100.;
     
     UISwipeGestureRecognizer* swip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeTriger:)];
     [self addGestureRecognizer:swip];
+    
+    [self.titleTextField setDelegate:self];
+    [self.titleTextField addTarget:self action:@selector(titleTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    [self.detailTextView setDelegate:self];
 }
 
 - (void)show
@@ -37,6 +49,17 @@ static CGFloat kLeftSpace = 100.;
     } completion:^(BOOL finished) {
         self.todoDetailViewStatus = kTodoDetailViewShowStatus;
     }];
+}
+
+- (void)showWithTodoId:(NSNumber *)todoId
+{
+    Todo* todo = [TodoLogic queryTodoWithId:todoId];
+    self.todo = todo;
+    [self.titleTextField setText:todo.subject];
+    if (todo.detail.length > 0) {
+        [self.detailTextView setText:todo.detail];
+    }
+    [self show];
 }
 
 - (void)hide
@@ -72,6 +95,22 @@ static CGFloat kLeftSpace = 100.;
         }
         self.tododetailViewToLeft.constant = constant;
         [self.superview layoutIfNeeded];
+    }
+}
+
+- (void)titleTextFieldDidChange:(id)sender {
+    self.todo.subject = self.titleTextField.text;
+    [TodoLogic updateTodo:self.todo finish:nil];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(todoSubjectChanged:todoId:)]) {
+        [self.delegate todoSubjectChanged:self.todo.subject todoId:self.todo.rowId];
+    }
+}
+
+- (IBAction)deleteTodo:(id)sender {
+    [self hide];
+    [TodoLogic deleteTodo:self.todo.rowId];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(todoDelete:)]) {
+        [self.delegate todoDelete:self.todo.rowId];
     }
 }
 

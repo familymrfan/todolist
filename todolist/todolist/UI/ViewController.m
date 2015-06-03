@@ -17,7 +17,7 @@
 
 static const CGFloat kAnimationTodoSpeed = .3f;
 
-@interface ViewController () <UITodoListViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, TodoTableViewCellDelegate, UIWeatherViewDelegate>
+@interface ViewController () <UITodoListViewDelegate, FMMoveTableViewDataSource, UIAddTodoViewDelegate, TodoTableViewCellDelegate, UIWeatherViewDelegate, UITodoDetailViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITodoListView *todolistTableView;
 
@@ -50,6 +50,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     [self.weatherView setDelegate:self];
     [self.todolistTableView setTodoListViewDelegate:self];
     self.tododetailViewToLeft.constant = self.view.frame.size.width;
+    [self.tododetailView setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -121,7 +122,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.tododetailView.todoDetailViewStatus == kTodoDetailViewHideStatus) {
-        [self.tododetailView show];
+        [self.tododetailView showWithTodoId:[[self.todolist objectAtIndex:indexPath.row] rowId]];
     }
 }
 
@@ -269,6 +270,31 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 {
     self.todolist = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoListWithDate:date]];
     [self.todolistTableView reloadData];
+}
+
+#pragma marks TodoDetailViewDelegate method
+-(void)todoSubjectChanged:(NSString *)subject todoId:(NSNumber *)todoId
+{
+    [self.todolist enumerateObjectsUsingBlock:^(Todo* todo, NSUInteger idx, BOOL *stop) {
+        if ([todo.rowId isEqualToNumber:todoId]) {
+            todo.subject = subject;
+            [self.todolistTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            return ;
+        }
+    }];
+}
+
+-(void)todoDelete:(NSNumber *)todoId
+{
+    [self.todolist enumerateObjectsUsingBlock:^(Todo* todo, NSUInteger idx, BOOL *stop) {
+        if ([todo.rowId isEqualToNumber:todoId]) {
+            [self.todolist removeObject:todo];
+            [self.todolistTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]]  withRowAnimation:UITableViewRowAnimationAutomatic];
+            return ;
+        }
+    }];
+    
+    
 }
 
 #pragma mark SWTableViewCellDelegate

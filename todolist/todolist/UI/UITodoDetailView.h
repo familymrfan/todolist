@@ -13,11 +13,19 @@ typedef enum : NSUInteger {
     kTodoDetailViewShowStatus
 } TodoDetailViewStatus;
 
+@protocol UITodoDetailViewDelegate <NSObject>
+
+- (void)todoSubjectChanged:(NSString *)subject todoId:(NSNumber *)todoId;
+- (void)todoDelete:(NSNumber *)todoId;
+
+@end
+
 @interface UITodoDetailView : UIView
 
+@property (nonatomic, weak) id<UITodoDetailViewDelegate> delegate;
 @property (nonatomic, assign) TodoDetailViewStatus todoDetailViewStatus;
 
-- (void)show;
+- (void)showWithTodoId:(NSNumber *)todoId;
 - (void)hide;
 
 @end
