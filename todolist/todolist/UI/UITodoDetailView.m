@@ -118,4 +118,11 @@ static CGFloat kLeftSpace = 100.;
     }
 }
 
+#pragma marks UITextViewDelegate method
+- (void)textViewDidChange:(UITextView *)textView
+{
+    self.todo.detail = self.detailTextView.text;
+    [TodoLogic updateTodo:self.todo finish:nil];
+}
+
 @end

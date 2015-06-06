@@ -293,8 +293,6 @@ static const CGFloat kAnimationTodoSpeed = .3f;
             return ;
         }
     }];
-    
-    
 }
 
 #pragma mark SWTableViewCellDelegate
