@@ -213,10 +213,20 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-iv-rQL">
                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="JDw-gY-VdH"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="8" y="42" width="200" height="30"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="JDw-gY-VdH"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="JDw-gY-VdH"/>
+                                            </mask>
                                         </variation>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syl-8p-fUr" customClass="SZTextView">
@@ -251,6 +261,10 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fgv-iv-rQL" firstAttribute="leading" secondItem="aKX-So-wE3" secondAttribute="leading" constant="8" id="LGv-Tp-TpN"/>
+                                    <constraint firstItem="fgv-iv-rQL" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="top" constant="42" id="RZJ-rM-BxO"/>
+                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="fgv-iv-rQL"/>
@@ -258,14 +272,21 @@
                                         <exclude reference="Yu3-2C-OfA"/>
                                         <exclude reference="7DQ-sf-hcm"/>
                                     </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="LGv-Tp-TpN"/>
+                                        <exclude reference="RZJ-rM-BxO"/>
+                                    </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="100" y="68" width="220" height="524"/>
+                                <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="fgv-iv-rQL"/>
                                         <include reference="Syl-8p-fUr"/>
                                         <include reference="Yu3-2C-OfA"/>
                                         <include reference="7DQ-sf-hcm"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="LGv-Tp-TpN"/>
+                                        <include reference="RZJ-rM-BxO"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -284,6 +305,7 @@
                             <constraint firstItem="772-zp-1qm" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="top" id="SzM-fl-jxl"/>
                             <constraint firstItem="aKX-So-wE3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="dxe-Ic-M0D"/>
                             <constraint firstItem="y30-ZR-RdX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="j5i-rn-tyF"/>
+                            <constraint firstItem="772-zp-1qm" firstAttribute="trailing" secondItem="fgv-iv-rQL" secondAttribute="trailing" priority="999" constant="8" id="pVx-0o-YJc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y30-ZR-RdX" secondAttribute="bottom" id="rB7-xB-jdV"/>
                             <constraint firstItem="aKX-So-wE3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="rfn-Jr-eBU"/>
                         </constraints>
@@ -298,6 +320,7 @@
                                 <exclude reference="j5i-rn-tyF"/>
                                 <exclude reference="2q4-AN-4lt"/>
                                 <exclude reference="SzM-fl-jxl"/>
+                                <exclude reference="pVx-0o-YJc"/>
                                 <exclude reference="dxe-Ic-M0D"/>
                                 <exclude reference="rfn-Jr-eBU"/>
                                 <exclude reference="5mZ-it-qXW"/>
@@ -315,6 +338,7 @@
                                 <include reference="j5i-rn-tyF"/>
                                 <include reference="2q4-AN-4lt"/>
                                 <include reference="SzM-fl-jxl"/>
+                                <include reference="pVx-0o-YJc"/>
                                 <exclude reference="dxe-Ic-M0D"/>
                                 <include reference="rfn-Jr-eBU"/>
                                 <include reference="5mZ-it-qXW"/>
