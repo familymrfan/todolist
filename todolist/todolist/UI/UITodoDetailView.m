@@ -10,7 +10,7 @@
 #import "TodoLogic.h"
 #import "SZTextView.h"
 
-static CGFloat kLeftSpace = 100.;
+static CGFloat kLeftSpace = 8.;
 
 @interface UITodoDetailView () <UIGestureRecognizerDelegate, UITextFieldDelegate, UITextViewDelegate>
 
@@ -29,7 +29,7 @@ static CGFloat kLeftSpace = 100.;
 
 - (void)awakeFromNib
 {
-    self.alpha = .8;
+    self.alpha = .9;
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panTriger:)];
     [self addGestureRecognizer:pan];
     

@@ -102,6 +102,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *todoIdentifier = @"todoIdentifier";
     TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:todoIdentifier];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     /*cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];*/
     [cell setDelegate:self];
@@ -135,6 +136,7 @@ static const CGFloat kAnimationTodoSpeed = .3f;
         [self.addTodoView.addTodoTextField becomeFirstResponder];
     }];
     [self.weatherView.addTodoButton setTitle:@"-" forState:UIControlStateNormal];
+    [self.tododetailView hide];
 }
 
 // 收起待办
@@ -186,10 +188,11 @@ static const CGFloat kAnimationTodoSpeed = .3f;
 #pragma mark todoListViewDelegate
 -(BOOL)touchInTodoListView:(TodoTableViewCell *)cell
 {
+    [self.tododetailView hide];
     if (![self isShrink]) {
         [self shrinkAddTodo];
+        return NO;
     }
-    [self.tododetailView hide];
     return YES;
 }
 
