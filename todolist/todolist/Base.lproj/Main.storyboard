@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -250,9 +251,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="DYo-Gv-9TO"/>
-                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="fgv-iv-rQL"/>
@@ -260,19 +258,14 @@
                                         <exclude reference="Yu3-2C-OfA"/>
                                         <exclude reference="7DQ-sf-hcm"/>
                                     </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="DYo-Gv-9TO"/>
-                                    </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="100" y="68" width="220" height="524"/>
                                     <mask key="subviews">
                                         <include reference="fgv-iv-rQL"/>
                                         <include reference="Syl-8p-fUr"/>
                                         <include reference="Yu3-2C-OfA"/>
                                         <include reference="7DQ-sf-hcm"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="DYo-Gv-9TO"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -284,9 +277,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="772-zp-1qm" firstAttribute="width" secondItem="aKX-So-wE3" secondAttribute="width" id="2q4-AN-4lt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="bottom" constant="8" id="5mZ-it-qXW"/>
                             <constraint firstItem="y30-ZR-RdX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7Nd-5D-zoW"/>
                             <constraint firstAttribute="trailing" secondItem="y30-ZR-RdX" secondAttribute="trailing" id="K6J-3I-lPS"/>
+                            <constraint firstItem="772-zp-1qm" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="top" id="SzM-fl-jxl"/>
                             <constraint firstItem="aKX-So-wE3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="dxe-Ic-M0D"/>
                             <constraint firstItem="y30-ZR-RdX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="j5i-rn-tyF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y30-ZR-RdX" secondAttribute="bottom" id="rB7-xB-jdV"/>
@@ -298,13 +293,15 @@
                                 <exclude reference="aKX-So-wE3"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5mZ-it-qXW"/>
-                                <exclude reference="rB7-xB-jdV"/>
-                                <exclude reference="dxe-Ic-M0D"/>
-                                <exclude reference="rfn-Jr-eBU"/>
                                 <exclude reference="7Nd-5D-zoW"/>
                                 <exclude reference="K6J-3I-lPS"/>
                                 <exclude reference="j5i-rn-tyF"/>
+                                <exclude reference="2q4-AN-4lt"/>
+                                <exclude reference="SzM-fl-jxl"/>
+                                <exclude reference="dxe-Ic-M0D"/>
+                                <exclude reference="rfn-Jr-eBU"/>
+                                <exclude reference="5mZ-it-qXW"/>
+                                <exclude reference="rB7-xB-jdV"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -313,13 +310,15 @@
                                 <include reference="aKX-So-wE3"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5mZ-it-qXW"/>
-                                <include reference="rB7-xB-jdV"/>
-                                <include reference="dxe-Ic-M0D"/>
-                                <include reference="rfn-Jr-eBU"/>
                                 <include reference="7Nd-5D-zoW"/>
                                 <include reference="K6J-3I-lPS"/>
                                 <include reference="j5i-rn-tyF"/>
+                                <include reference="2q4-AN-4lt"/>
+                                <include reference="SzM-fl-jxl"/>
+                                <exclude reference="dxe-Ic-M0D"/>
+                                <include reference="rfn-Jr-eBU"/>
+                                <include reference="5mZ-it-qXW"/>
+                                <include reference="rB7-xB-jdV"/>
                             </mask>
                         </variation>
                     </view>
