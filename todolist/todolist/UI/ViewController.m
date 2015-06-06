@@ -292,7 +292,12 @@ static const CGFloat kAnimationTodoSpeed = .3f;
     [self.todolist enumerateObjectsUsingBlock:^(Todo* todo, NSUInteger idx, BOOL *stop) {
         if ([todo.rowId isEqualToNumber:todoId]) {
             [self.todolist removeObject:todo];
+            [CATransaction begin];
+            [CATransaction setCompletionBlock:^{
+                [self.todolistTableView reloadData];
+            }];
             [self.todolistTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]]  withRowAnimation:UITableViewRowAnimationAutomatic];
+            [CATransaction commit];
             return ;
         }
     }];

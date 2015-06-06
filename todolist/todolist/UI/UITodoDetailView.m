@@ -20,6 +20,8 @@ static CGFloat kLeftSpace = 8.;
 
 @property (weak, nonatomic) IBOutlet SZTextView *detailTextView;
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 @property (nonatomic, assign) CGFloat constant;
 @property (nonatomic) Todo* todo;
 
@@ -29,7 +31,7 @@ static CGFloat kLeftSpace = 8.;
 
 - (void)awakeFromNib
 {
-    self.alpha = .9;
+    //self.alpha = .9;
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panTriger:)];
     [self addGestureRecognizer:pan];
     
@@ -68,10 +70,16 @@ static CGFloat kLeftSpace = 8.;
     [self show];
 }
 
-- (void)hide
+- (void)exitKeyBoard
 {
     [self.titleTextField resignFirstResponder];
     [self.detailTextView resignFirstResponder];
+}
+
+- (void)hide
+{
+    [self exitKeyBoard];
+    [self.datePicker setHidden:YES];
     self.tododetailViewToLeft.constant = self.superview.frame.size.width;
     [UIView animateWithDuration:.3f animations:^{
         [self.superview layoutIfNeeded];
@@ -112,6 +120,10 @@ static CGFloat kLeftSpace = 8.;
     if (self.delegate && [self.delegate respondsToSelector:@selector(todoSubjectChanged:todoId:)]) {
         [self.delegate todoSubjectChanged:self.todo.subject todoId:self.todo.rowId];
     }
+}
+
+- (IBAction)addNotification:(id)sender {
+    [self.datePicker setHidden:NO];
 }
 
 - (IBAction)deleteTodo:(id)sender {
