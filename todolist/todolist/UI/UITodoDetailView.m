@@ -62,12 +62,16 @@ static CGFloat kLeftSpace = 100.;
     [self.titleTextField setText:todo.subject];
     if (todo.detail.length > 0) {
         [self.detailTextView setText:todo.detail];
+    } else {
+        [self.detailTextView setText:@""];
     }
     [self show];
 }
 
 - (void)hide
 {
+    [self.titleTextField resignFirstResponder];
+    [self.detailTextView resignFirstResponder];
     self.tododetailViewToLeft.constant = self.superview.frame.size.width;
     [UIView animateWithDuration:.3f animations:^{
         [self.superview layoutIfNeeded];
