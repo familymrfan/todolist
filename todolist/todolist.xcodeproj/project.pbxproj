@@ -24,6 +24,7 @@
 		0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3A01AECD0CD008D40A2 /* ViewController.m */; };
 		0BC4D3A61AECD22B008D40A2 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3A51AECD22B008D40A2 /* Todo.m */; };
 		0BC4D3B01AECDF3E008D40A2 /* TodoLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3AF1AECDF3E008D40A2 /* TodoLogic.m */; };
+		0BCA95651B22BE9D007B395D /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BCA95641B22BE9D007B395D /* SZTextView.m */; };
 		E314617D1B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461721B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m */; };
 		E314617E1B11CBF9003BBF7A /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461741B11CBF9003BBF7A /* SWCellScrollView.m */; };
 		E314617F1B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461761B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m */; };
@@ -91,6 +92,8 @@
 		0BC4D3A51AECD22B008D40A2 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Todo.m; path = Data/Todo.m; sourceTree = "<group>"; };
 		0BC4D3AE1AECDF3E008D40A2 /* TodoLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoLogic.h; path = Business/TodoLogic.h; sourceTree = "<group>"; };
 		0BC4D3AF1AECDF3E008D40A2 /* TodoLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoLogic.m; path = Business/TodoLogic.m; sourceTree = "<group>"; };
+		0BCA95631B22BE9D007B395D /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZTextView.h; path = third_party/SZTextView/SZTextView.h; sourceTree = "<group>"; };
+		0BCA95641B22BE9D007B395D /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = third_party/SZTextView/SZTextView.m; sourceTree = "<group>"; };
 		E31461711B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SWUtilityButtons.h"; path = "third_party/SWTableViewCell/NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
 		E31461721B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SWUtilityButtons.m"; path = "third_party/SWTableViewCell/NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
 		E31461731B11CBF9003BBF7A /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWCellScrollView.h; path = third_party/SWTableViewCell/SWCellScrollView.h; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		0BC4D3921AECC9D4008D40A2 /* third_party */ = {
 			isa = PBXGroup;
 			children = (
+				0BCA95601B22BE8F007B395D /* SZTextView */,
 				0BA0DD4E1B14A1E100522DFF /* FMMoveTableView */,
 				E314616D1B11CB98003BBF7A /* SWTableViewCell */,
 				0BC4D3931AECC9F1008D40A2 /* Mr.xcodeproj */,
@@ -267,6 +271,15 @@
 				0BC4D3AF1AECDF3E008D40A2 /* TodoLogic.m */,
 			);
 			name = Business;
+			sourceTree = "<group>";
+		};
+		0BCA95601B22BE8F007B395D /* SZTextView */ = {
+			isa = PBXGroup;
+			children = (
+				0BCA95631B22BE9D007B395D /* SZTextView.h */,
+				0BCA95641B22BE9D007B395D /* SZTextView.m */,
+			);
+			name = SZTextView;
 			sourceTree = "<group>";
 		};
 		E314616D1B11CB98003BBF7A /* SWTableViewCell */ = {
@@ -427,6 +440,7 @@
 				E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */,
 				0BA0DD551B14A21400522DFF /* FMMoveTableView.m in Sources */,
 				0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */,
+				0BCA95651B22BE9D007B395D /* SZTextView.m in Sources */,
 				0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */,
 				E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */,

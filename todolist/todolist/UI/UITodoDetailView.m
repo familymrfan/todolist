@@ -8,6 +8,7 @@
 
 #import "UITodoDetailView.h"
 #import "TodoLogic.h"
+#import "SZTextView.h"
 
 static CGFloat kLeftSpace = 100.;
 
@@ -17,7 +18,7 @@ static CGFloat kLeftSpace = 100.;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
-@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+@property (weak, nonatomic) IBOutlet SZTextView *detailTextView;
 
 @property (nonatomic, assign) CGFloat constant;
 @property (nonatomic) Todo* todo;
@@ -38,6 +39,9 @@ static CGFloat kLeftSpace = 100.;
     [self.titleTextField setDelegate:self];
     [self.titleTextField addTarget:self action:@selector(titleTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
+    self.detailTextView.placeholder = @"备注";
+    self.detailTextView.placeholderTextColor = [UIColor lightGrayColor];
+    self.detailTextView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
     [self.detailTextView setDelegate:self];
 }
 
