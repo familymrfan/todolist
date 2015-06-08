@@ -18,6 +18,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSString* subject;
 @property (nonatomic) NSString* detail;
 @property (nonatomic) NSDate* create_date;
+@property (nonatomic) NSDate* remind_date;
 @property (nonatomic) NSNumber* status;
 @property (nonatomic) NSString* priority;
 

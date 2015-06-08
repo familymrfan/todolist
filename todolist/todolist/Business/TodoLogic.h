@@ -29,4 +29,10 @@
 // 删除待办
 + (void)deleteTodo:(NSNumber *)todoId;
 
+// 添加提醒
++ (void)addTodoNotification:(Todo *)todo date:(NSDate *)date;
+
+// 取消提醒
++ (void)removeTodoNotification:(NSNumber *)todoId;
+
 @end

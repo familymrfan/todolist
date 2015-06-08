@@ -20,6 +20,10 @@ static CGFloat kLeftSpace = 8.;
 
 @property (weak, nonatomic) IBOutlet SZTextView *detailTextView;
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+@property (weak, nonatomic) IBOutlet UIButton *remindButton;
+
 @property (nonatomic, assign) CGFloat constant;
 @property (nonatomic) Todo* todo;
 
@@ -43,6 +47,8 @@ static CGFloat kLeftSpace = 8.;
     self.detailTextView.placeholderTextColor = [UIColor lightGrayColor];
     self.detailTextView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
     [self.detailTextView setDelegate:self];
+    
+    [self.datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)show
@@ -59,6 +65,11 @@ static CGFloat kLeftSpace = 8.;
 {
     Todo* todo = [TodoLogic queryTodoWithId:todoId];
     self.todo = todo;
+    if (todo.remind_date) {
+        [self.remindButton setTitle:@"取消提醒" forState:UIControlStateNormal];
+        [self.datePicker setHidden:NO];
+        [self.datePicker setDate:todo.remind_date];
+    }
     [self.titleTextField setText:todo.subject];
     if (todo.detail.length > 0) {
         [self.detailTextView setText:todo.detail];
@@ -127,11 +138,30 @@ static CGFloat kLeftSpace = 8.;
     }
 }
 
+- (IBAction)addRemindTime:(id)sender {
+    if ([self.remindButton.titleLabel.text isEqualToString:@"添加提醒"]) {
+        [self.remindButton setTitle:@"取消提醒" forState:UIControlStateNormal];
+        [self.datePicker setHidden:NO];
+    } else {
+        [self.remindButton setTitle:@"添加提醒" forState:UIControlStateNormal];
+        [self.datePicker setHidden:YES];
+        [TodoLogic removeTodoNotification:self.todo.rowId];
+    }
+}
+
 #pragma marks UITextViewDelegate method
 - (void)textViewDidChange:(UITextView *)textView
 {
     self.todo.detail = self.detailTextView.text;
     [TodoLogic updateTodo:self.todo finish:nil];
+}
+
+- (void)dateChanged:(id)sender
+{
+    UIDatePicker* control = (UIDatePicker*)sender;
+    NSDate* date = control.date;
+    [TodoLogic removeTodoNotification:self.todo.rowId];
+    [TodoLogic addTodoNotification:self.todo date:date];
 }
 
 @end

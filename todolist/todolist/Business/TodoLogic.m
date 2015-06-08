@@ -148,4 +148,35 @@
     [[DataLibrary saver] remove:[Todo class] rowId:todoId];
 }
 
++ (void)addTodoNotification:(Todo *)todo date:(NSDate *)date
+{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    // 截取分钟
+    NSTimeInterval time = floor([date timeIntervalSince1970] / 60.0) * 60.0;
+    NSDate *reminderTime = [NSDate dateWithTimeIntervalSince1970:time];
+    notification.fireDate = reminderTime;
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    notification.alertBody = [NSString stringWithFormat:@"%@", todo.subject];
+    notification.userInfo = @{@"type":@"todo", @"todoId":todo.rowId};
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    todo.remind_date = date;
+    [self updateTodo:todo finish:nil];
+}
+
++ (void)removeTodoNotification:(NSNumber *)todoId
+{
+    Todo* todo = [[Todo alloc] init];
+    todo.rowId = todoId;
+    todo.remind_date = (NSDate *)[NSNull null];
+    [self updateTodo:todo finish:nil];
+    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    [localNotifications enumerateObjectsUsingBlock:^(UILocalNotification* notify, NSUInteger idx, BOOL *stop) {
+        if ([notify.userInfo objectForKey:@"todoId"] && [[notify.userInfo objectForKey:@"todoId"] isEqualToNumber:todoId]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:notify];
+        };
+    }];
+}
+
 @end

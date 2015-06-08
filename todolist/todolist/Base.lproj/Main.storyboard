@@ -189,15 +189,35 @@
                                                     <action selector="deleteTodo:" destination="aKX-So-wE3" eventType="touchUpInside" id="cKW-s0-4ZR"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8O-L2-JeG">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <state key="normal" title="添加提醒">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addRemindTime:" destination="aKX-So-wE3" eventType="touchUpInside" id="zfs-ik-rkS"/>
+                                                </connections>
+                                            </button>
+                                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sig-tl-SZz">
+                                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="455465314.86552399">
+                                                    <!--2015-06-08 14:08:34 +0000-->
+                                                </date>
+                                            </datePicker>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.44584542698658408" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="fgv-iv-rQL" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="top" constant="42" id="0Vw-3p-kn6"/>
+                                            <constraint firstItem="sig-tl-SZz" firstAttribute="leading" secondItem="aKX-So-wE3" secondAttribute="leading" id="BKe-f6-oN7"/>
                                             <constraint firstItem="fgv-iv-rQL" firstAttribute="leading" secondItem="aKX-So-wE3" secondAttribute="leading" constant="8" id="EGs-PZ-Hyu"/>
                                             <constraint firstAttribute="trailing" secondItem="Syl-8p-fUr" secondAttribute="trailing" constant="8" id="U3y-Qa-HA5"/>
+                                            <constraint firstItem="sig-tl-SZz" firstAttribute="centerX" secondItem="Syl-8p-fUr" secondAttribute="centerX" id="VNJ-m1-bOD"/>
+                                            <constraint firstItem="U8O-L2-JeG" firstAttribute="baseline" secondItem="7DQ-sf-hcm" secondAttribute="baseline" id="Zhd-TO-5vZ"/>
+                                            <constraint firstItem="U8O-L2-JeG" firstAttribute="leading" secondItem="fgv-iv-rQL" secondAttribute="leading" id="cdk-5A-plf"/>
                                             <constraint firstItem="7DQ-sf-hcm" firstAttribute="top" secondItem="aKX-So-wE3" secondAttribute="topMargin" id="h9W-Zx-hAf"/>
                                             <constraint firstItem="Syl-8p-fUr" firstAttribute="top" secondItem="fgv-iv-rQL" secondAttribute="bottom" constant="8" id="lBX-ZL-fXc"/>
                                             <constraint firstItem="Syl-8p-fUr" firstAttribute="leading" secondItem="aKX-So-wE3" secondAttribute="leading" constant="8" id="mop-rB-uSd"/>
+                                            <constraint firstAttribute="bottom" secondItem="sig-tl-SZz" secondAttribute="bottom" id="usI-Fe-ysV"/>
                                             <constraint firstAttribute="trailing" secondItem="fgv-iv-rQL" secondAttribute="trailing" constant="8" id="vuH-6j-yew"/>
                                             <constraint firstItem="7DQ-sf-hcm" firstAttribute="trailing" secondItem="fgv-iv-rQL" secondAttribute="trailing" id="zaF-ti-IFC"/>
                                         </constraints>
@@ -206,8 +226,12 @@
                                                 <exclude reference="fgv-iv-rQL"/>
                                                 <exclude reference="Syl-8p-fUr"/>
                                                 <exclude reference="7DQ-sf-hcm"/>
+                                                <exclude reference="U8O-L2-JeG"/>
+                                                <exclude reference="sig-tl-SZz"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <exclude reference="Zhd-TO-5vZ"/>
+                                                <exclude reference="cdk-5A-plf"/>
                                                 <exclude reference="0Vw-3p-kn6"/>
                                                 <exclude reference="EGs-PZ-Hyu"/>
                                                 <exclude reference="vuH-6j-yew"/>
@@ -216,6 +240,9 @@
                                                 <exclude reference="mop-rB-uSd"/>
                                                 <exclude reference="h9W-Zx-hAf"/>
                                                 <exclude reference="zaF-ti-IFC"/>
+                                                <exclude reference="BKe-f6-oN7"/>
+                                                <exclude reference="VNJ-m1-bOD"/>
+                                                <exclude reference="usI-Fe-ysV"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -223,8 +250,12 @@
                                                 <include reference="fgv-iv-rQL"/>
                                                 <include reference="Syl-8p-fUr"/>
                                                 <include reference="7DQ-sf-hcm"/>
+                                                <include reference="U8O-L2-JeG"/>
+                                                <include reference="sig-tl-SZz"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <include reference="Zhd-TO-5vZ"/>
+                                                <include reference="cdk-5A-plf"/>
                                                 <include reference="0Vw-3p-kn6"/>
                                                 <include reference="EGs-PZ-Hyu"/>
                                                 <include reference="vuH-6j-yew"/>
@@ -233,10 +264,15 @@
                                                 <include reference="mop-rB-uSd"/>
                                                 <include reference="h9W-Zx-hAf"/>
                                                 <include reference="zaF-ti-IFC"/>
+                                                <include reference="BKe-f6-oN7"/>
+                                                <include reference="VNJ-m1-bOD"/>
+                                                <include reference="usI-Fe-ysV"/>
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <outlet property="datePicker" destination="sig-tl-SZz" id="zAc-F7-eAI"/>
                                             <outlet property="detailTextView" destination="Syl-8p-fUr" id="wo6-Tf-nlM"/>
+                                            <outlet property="remindButton" destination="U8O-L2-JeG" id="KHg-dT-jxY"/>
                                             <outlet property="titleTextField" destination="fgv-iv-rQL" id="Kiy-54-neG"/>
                                             <outlet property="tododetailViewToLeft" destination="Cj6-Us-Uaw" id="pXL-Vn-Spf"/>
                                         </connections>
