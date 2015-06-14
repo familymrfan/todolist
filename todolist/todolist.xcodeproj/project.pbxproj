@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B13F0C31B18103400509F2A /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F0C21B18103400509F2A /* TodoTableViewCell.m */; };
 		0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */; };
 		0B84C9241AE375EB00A93AA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9231AE375EB00A93AA0 /* main.m */; };
 		0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9261AE375EB00A93AA0 /* AppDelegate.m */; };
@@ -15,8 +14,6 @@
 		0B84C9321AE375EB00A93AA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C9311AE375EB00A93AA0 /* Images.xcassets */; };
 		0B84C9351AE375EB00A93AA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C9331AE375EB00A93AA0 /* LaunchScreen.xib */; };
 		0B84C9411AE375EB00A93AA0 /* todolistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84C9401AE375EB00A93AA0 /* todolistTests.m */; };
-		0BA0DD091B0B5C7800522DFF /* UIWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */; };
-		0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */; };
 		0BA0DD551B14A21400522DFF /* FMMoveTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD521B14A21400522DFF /* FMMoveTableView.m */; };
 		0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD541B14A21400522DFF /* FMMoveTableViewCell.m */; };
 		0BA0DD5A1B16201400522DFF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA0DD591B16201400522DFF /* QuartzCore.framework */; };
@@ -31,8 +28,6 @@
 		E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461781B11CBF9003BBF7A /* SWTableViewCell.m */; };
 		E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */; };
 		E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */; };
-		E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461841B120B2C003BBF7A /* UITodoListView.m */; };
-		E38C4F991B1DDD3E00DD3FFE /* UITodoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E38C4F981B1DDD3E00DD3FFE /* UITodoDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B13F0C11B18103400509F2A /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoTableViewCell.h; path = UI/TodoTableViewCell.h; sourceTree = "<group>"; };
-		0B13F0C21B18103400509F2A /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoTableViewCell.m; path = UI/TodoTableViewCell.m; sourceTree = "<group>"; };
 		0B13F0CA1B18578200509F2A /* UIErasureGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIErasureGestureRecognizer.h; path = Lab/UIErasureGestureRecognizer.h; sourceTree = "<group>"; };
 		0B13F0CB1B18578200509F2A /* UIErasureGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIErasureGestureRecognizer.m; path = Lab/UIErasureGestureRecognizer.m; sourceTree = "<group>"; };
 		0B84C91E1AE375EB00A93AA0 /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,10 +68,6 @@
 		0B84C93A1AE375EB00A93AA0 /* todolistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todolistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B84C93F1AE375EB00A93AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B84C9401AE375EB00A93AA0 /* todolistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todolistTests.m; sourceTree = "<group>"; };
-		0BA0DD071B0B5C7800522DFF /* UIWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWeatherView.h; path = UI/UIWeatherView.h; sourceTree = "<group>"; };
-		0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWeatherView.m; path = UI/UIWeatherView.m; sourceTree = "<group>"; };
-		0BA0DD0C1B0B5CB300522DFF /* UIAddTodoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIAddTodoView.h; path = UI/UIAddTodoView.h; sourceTree = "<group>"; };
-		0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIAddTodoView.m; path = UI/UIAddTodoView.m; sourceTree = "<group>"; };
 		0BA0DD511B14A21400522DFF /* FMMoveTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMMoveTableView.h; path = third_party/FMMoveTableView/FMMoveTableView.h; sourceTree = "<group>"; };
 		0BA0DD521B14A21400522DFF /* FMMoveTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMMoveTableView.m; path = third_party/FMMoveTableView/FMMoveTableView.m; sourceTree = "<group>"; };
 		0BA0DD531B14A21400522DFF /* FMMoveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMMoveTableViewCell.h; path = third_party/FMMoveTableView/FMMoveTableViewCell.h; sourceTree = "<group>"; };
@@ -106,10 +95,6 @@
 		E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonTapGestureRecognizer.m; path = third_party/SWTableViewCell/SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		E314617B1B11CBF9003BBF7A /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonView.h; path = third_party/SWTableViewCell/SWUtilityButtonView.h; sourceTree = "<group>"; };
 		E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonView.m; path = third_party/SWTableViewCell/SWUtilityButtonView.m; sourceTree = "<group>"; };
-		E31461831B120B2C003BBF7A /* UITodoListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITodoListView.h; path = UI/UITodoListView.h; sourceTree = "<group>"; };
-		E31461841B120B2C003BBF7A /* UITodoListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITodoListView.m; path = UI/UITodoListView.m; sourceTree = "<group>"; };
-		E38C4F971B1DDD3E00DD3FFE /* UITodoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITodoDetailView.h; path = UI/UITodoDetailView.h; sourceTree = "<group>"; };
-		E38C4F981B1DDD3E00DD3FFE /* UITodoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITodoDetailView.m; path = UI/UITodoDetailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,16 +226,6 @@
 			children = (
 				0BC4D39F1AECD0CD008D40A2 /* ViewController.h */,
 				0BC4D3A01AECD0CD008D40A2 /* ViewController.m */,
-				0BA0DD071B0B5C7800522DFF /* UIWeatherView.h */,
-				0BA0DD081B0B5C7800522DFF /* UIWeatherView.m */,
-				0BA0DD0C1B0B5CB300522DFF /* UIAddTodoView.h */,
-				0BA0DD0D1B0B5CB400522DFF /* UIAddTodoView.m */,
-				E31461831B120B2C003BBF7A /* UITodoListView.h */,
-				E31461841B120B2C003BBF7A /* UITodoListView.m */,
-				0B13F0C11B18103400509F2A /* TodoTableViewCell.h */,
-				0B13F0C21B18103400509F2A /* TodoTableViewCell.m */,
-				E38C4F971B1DDD3E00DD3FFE /* UITodoDetailView.h */,
-				E38C4F981B1DDD3E00DD3FFE /* UITodoDetailView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -425,10 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */,
-				0B13F0C31B18103400509F2A /* TodoTableViewCell.m in Sources */,
 				0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */,
-				E38C4F991B1DDD3E00DD3FFE /* UITodoDetailView.m in Sources */,
-				E31461851B120B2C003BBF7A /* UITodoListView.m in Sources */,
 				E314617D1B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				E314617F1B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m in Sources */,
 				E314617E1B11CBF9003BBF7A /* SWCellScrollView.m in Sources */,
@@ -436,14 +408,12 @@
 				0BC4D3B01AECDF3E008D40A2 /* TodoLogic.m in Sources */,
 				0BC4D3A61AECD22B008D40A2 /* Todo.m in Sources */,
 				E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */,
-				0BA0DD091B0B5C7800522DFF /* UIWeatherView.m in Sources */,
 				E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */,
 				0BA0DD551B14A21400522DFF /* FMMoveTableView.m in Sources */,
 				0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */,
 				0BCA95651B22BE9D007B395D /* SZTextView.m in Sources */,
 				0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */,
 				E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
-				0BA0DD0E1B0B5CB400522DFF /* UIAddTodoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
