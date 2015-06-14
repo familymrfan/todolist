@@ -28,6 +28,9 @@
 		E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E31461781B11CBF9003BBF7A /* SWTableViewCell.m */; };
 		E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */; };
 		E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */; };
+		E31DEAD61B2DAD0E00D23499 /* TodoListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31DEAD51B2DAD0E00D23499 /* TodoListTableView.m */; };
+		E31DEAD91B2DAD5F00D23499 /* TodoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E31DEAD81B2DAD5F00D23499 /* TodoListTableViewCell.m */; };
+		E31DEADF1B2DCAF700D23499 /* TodoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31DEADE1B2DCAF700D23499 /* TodoDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,12 @@
 		E314617A1B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonTapGestureRecognizer.m; path = third_party/SWTableViewCell/SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		E314617B1B11CBF9003BBF7A /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonView.h; path = third_party/SWTableViewCell/SWUtilityButtonView.h; sourceTree = "<group>"; };
 		E314617C1B11CBF9003BBF7A /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonView.m; path = third_party/SWTableViewCell/SWUtilityButtonView.m; sourceTree = "<group>"; };
+		E31DEAD41B2DAD0E00D23499 /* TodoListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoListTableView.h; path = UI/TodoListTableView.h; sourceTree = "<group>"; };
+		E31DEAD51B2DAD0E00D23499 /* TodoListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoListTableView.m; path = UI/TodoListTableView.m; sourceTree = "<group>"; };
+		E31DEAD71B2DAD5F00D23499 /* TodoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoListTableViewCell.h; path = UI/TodoListTableViewCell.h; sourceTree = "<group>"; };
+		E31DEAD81B2DAD5F00D23499 /* TodoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoListTableViewCell.m; path = UI/TodoListTableViewCell.m; sourceTree = "<group>"; };
+		E31DEADD1B2DCAF700D23499 /* TodoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoDetailViewController.h; path = UI/TodoDetailViewController.h; sourceTree = "<group>"; };
+		E31DEADE1B2DCAF700D23499 /* TodoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoDetailViewController.m; path = UI/TodoDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +235,12 @@
 			children = (
 				0BC4D39F1AECD0CD008D40A2 /* ViewController.h */,
 				0BC4D3A01AECD0CD008D40A2 /* ViewController.m */,
+				E31DEAD41B2DAD0E00D23499 /* TodoListTableView.h */,
+				E31DEAD51B2DAD0E00D23499 /* TodoListTableView.m */,
+				E31DEAD71B2DAD5F00D23499 /* TodoListTableViewCell.h */,
+				E31DEAD81B2DAD5F00D23499 /* TodoListTableViewCell.m */,
+				E31DEADD1B2DCAF700D23499 /* TodoDetailViewController.h */,
+				E31DEADE1B2DCAF700D23499 /* TodoDetailViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -400,8 +415,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */,
+				E31DEADF1B2DCAF700D23499 /* TodoDetailViewController.m in Sources */,
 				0B84C9271AE375EB00A93AA0 /* AppDelegate.m in Sources */,
 				E314617D1B11CBF9003BBF7A /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				E31DEAD61B2DAD0E00D23499 /* TodoListTableView.m in Sources */,
 				E314617F1B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m in Sources */,
 				E314617E1B11CBF9003BBF7A /* SWCellScrollView.m in Sources */,
 				0B84C9241AE375EB00A93AA0 /* main.m in Sources */,
@@ -410,6 +427,7 @@
 				E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */,
 				E31461801B11CBF9003BBF7A /* SWTableViewCell.m in Sources */,
 				0BA0DD551B14A21400522DFF /* FMMoveTableView.m in Sources */,
+				E31DEAD91B2DAD5F00D23499 /* TodoListTableViewCell.m in Sources */,
 				0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */,
 				0BCA95651B22BE9D007B395D /* SZTextView.m in Sources */,
 				0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */,
