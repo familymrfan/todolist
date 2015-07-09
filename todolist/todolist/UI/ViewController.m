@@ -10,12 +10,13 @@
 #import "TodoLogic.h"
 #import "TodoListTableViewCell.h"
 
-static const NSInteger kLeftlistSpace = 20;
+static const NSInteger kLeftlistSpace = 50;
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *todolistTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *todoTableViewToLeft;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fackNavigationBarToLeft;
 
 @end
 
@@ -63,6 +64,11 @@ static const NSInteger kLeftlistSpace = 20;
         _todoTableViewToLeft.constant = 0;
     } else {
         _todoTableViewToLeft.constant = kLeftlistSpace;
+    }
+    if (_fackNavigationBarToLeft.constant == kLeftlistSpace) {
+        _fackNavigationBarToLeft.constant = 0;
+    } else {
+        _fackNavigationBarToLeft.constant = kLeftlistSpace;
     }
     [UIView animateWithDuration:.3f animations:^{
         [self.view layoutIfNeeded];

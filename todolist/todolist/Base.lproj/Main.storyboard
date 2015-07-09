@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-he-0c4" customClass="TodoListTableView">
@@ -70,21 +70,65 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXw-1G-EH3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryp-kx-SGN">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="菜单">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="14" y="26" width="46" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="leftListSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CN8-LC-Vs3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="vAV-pw-F3d"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="ryp-kx-SGN"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="vAV-pw-F3d"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="ryp-kx-SGN"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="vAV-pw-F3d"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qUd-he-0c4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Eg3-hf-sPA"/>
                             <constraint firstItem="qUd-he-0c4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NVL-8X-8lo"/>
+                            <constraint firstItem="qUd-he-0c4" firstAttribute="top" secondItem="yXw-1G-EH3" secondAttribute="bottom" id="QXk-N2-ykC"/>
                             <constraint firstItem="qUd-he-0c4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="VKM-8F-2B1"/>
+                            <constraint firstItem="yXw-1G-EH3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eG7-oj-Eu4"/>
+                            <constraint firstAttribute="trailing" secondItem="yXw-1G-EH3" secondAttribute="trailing" id="jGY-dQ-LGg"/>
+                            <constraint firstItem="yXw-1G-EH3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="top" id="s6O-ut-lgV"/>
                             <constraint firstAttribute="trailing" secondItem="qUd-he-0c4" secondAttribute="trailing" id="vAW-DR-IkG"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="qUd-he-0c4"/>
+                                <exclude reference="yXw-1G-EH3"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Eg3-hf-sPA"/>
+                                <exclude reference="eG7-oj-Eu4"/>
+                                <exclude reference="jGY-dQ-LGg"/>
+                                <exclude reference="s6O-ut-lgV"/>
                                 <exclude reference="NVL-8X-8lo"/>
+                                <exclude reference="QXk-N2-ykC"/>
                                 <exclude reference="VKM-8F-2B1"/>
                                 <exclude reference="vAW-DR-IkG"/>
                             </mask>
@@ -92,10 +136,14 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="qUd-he-0c4"/>
+                                <include reference="yXw-1G-EH3"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Eg3-hf-sPA"/>
+                                <include reference="eG7-oj-Eu4"/>
+                                <include reference="jGY-dQ-LGg"/>
+                                <include reference="s6O-ut-lgV"/>
                                 <include reference="NVL-8X-8lo"/>
+                                <include reference="QXk-N2-ykC"/>
                                 <include reference="VKM-8F-2B1"/>
                                 <include reference="vAW-DR-IkG"/>
                             </mask>
@@ -103,25 +151,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="IoV-Ao-1Bl">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="left_list" id="uTx-zW-ZIX">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="leftListSwitch:" destination="BYZ-38-t0r" id="L6H-kx-Wym"/>
-                            </connections>
-                        </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4LC-NG-OJM">
-                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="今天">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="uxk-ZI-xDX">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="fackNavigationBarToLeft" destination="eG7-oj-Eu4" id="nRz-Zq-ber"/>
                         <outlet property="todoTableViewToLeft" destination="NVL-8X-8lo" id="awm-af-hVW"/>
                         <outlet property="todolistTableView" destination="qUd-he-0c4" id="6gl-oP-Wfw"/>
                     </connections>
@@ -139,6 +171,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LBN-Gy-AlH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rFT-Yp-eJn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -152,9 +185,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cad-dM-1ga" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="b17-Ew-z2u">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" barStyle="black" translucent="NO" id="b17-Ew-z2u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -166,7 +200,4 @@
             <point key="canvasLocation" x="477" y="176"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="left_list" width="15" height="16"/>
-    </resources>
 </document>
