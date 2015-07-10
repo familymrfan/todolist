@@ -47,7 +47,7 @@ static const NSInteger kLeftlistSpace = 50;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TodoListTableViewCell* cell = [_todolistTableView dequeueReusableCellWithIdentifier:@"todoCellIdentifier"];
-    [cell.todoLabel setText:@"今天去买菜，一斤土豆，一斤白菜 ..."];
+    [cell.todoLabel setText:@"with all of commit, which is a tag ..."];
     return cell;
 }
 
