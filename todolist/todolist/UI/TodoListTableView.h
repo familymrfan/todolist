@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class Todo;
 @interface TodoListTableView : UITableView
+
+- (void)addTodo:(Todo *)todo;
 
 @end

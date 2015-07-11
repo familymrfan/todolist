@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface TodoListTableViewCell : UITableViewCell
+@interface TodoListTableViewCell : SWTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *todoLabel;
 

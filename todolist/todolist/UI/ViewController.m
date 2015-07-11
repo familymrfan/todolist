@@ -8,15 +8,17 @@
 
 #import "ViewController.h"   
 #import "TodoLogic.h"
+#import "TodoListTableView.h"
 #import "TodoListTableViewCell.h"
 
 static const NSInteger kLeftlistSpace = 50;
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *todolistTableView;
+@property (weak, nonatomic) IBOutlet TodoListTableView *todolistTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *todoTableViewToLeft;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fackNavigationBarToLeft;
+@property (weak, nonatomic) IBOutlet UITextField *addTodoTextField;
 
 @end
 
@@ -25,8 +27,7 @@ static const NSInteger kLeftlistSpace = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [_todolistTableView setDataSource:self];
-    [_todolistTableView setDelegate:self];
+    [self.addTodoTextField setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -36,27 +37,6 @@ static const NSInteger kLeftlistSpace = 50;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma marks UITableViewDataSource method
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 10;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TodoListTableViewCell* cell = [_todolistTableView dequeueReusableCellWithIdentifier:@"todoCellIdentifier"];
-    [cell.todoLabel setText:@"with all of commit, which is a tag ..."];
-    return cell;
-}
-
-#pragma marks UITableViewDelegate method
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController* todoDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"todoDetailViewControllerIdentity"];
-    [self.navigationController pushViewController:todoDetailViewController animated:YES];
 }
 
 - (IBAction)leftListSwitch:(id)sender {
@@ -74,4 +54,14 @@ static const NSInteger kLeftlistSpace = 50;
         [self.view layoutIfNeeded];
     }];
 }
+
+#pragma mark UITextField Delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    Todo* todo = [[Todo alloc] init];
+    todo.subject = self.addTodoTextField.text;
+    [self.todolistTableView addTodo:todo];
+    return YES;
+}
+
 @end

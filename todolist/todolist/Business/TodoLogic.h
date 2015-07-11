@@ -17,6 +17,9 @@
 // 移动一条待办在另一条待办之上, 如果destTodoId是nil，移动置最底层
 + (void)putOnAnotherTodoWithSrcTodoId:(NSNumber *)srcTodoId withDestTodoId:(NSNumber *)destTodoId finish:(void(^)(NSNumber* destTodoId))finish;
 
+// 返回待办列表
++ (NSArray *)queryDayTodoList;
+
 // 返回date标记的日期的待办列表
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date;
 

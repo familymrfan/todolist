@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cad-dM-1ga">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cad-dM-1ga">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -168,7 +168,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="separatorInset" minX="45" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="center" selectionStyle="none" indentationLevel="1" indentationWidth="10" reuseIdentifier="todoCellIdentifier" id="fPv-ed-fw1" customClass="TodoListTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -182,33 +182,67 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqr-Yc-RNP">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="8Wk-eJ-OFd"/>
+                                                        <constraint firstAttribute="height" constant="30" id="ifm-GL-6Qc"/>
+                                                    </constraints>
+                                                    <state key="normal" title="No">
+                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="8Wk-eJ-OFd"/>
+                                                            <exclude reference="ifm-GL-6Qc"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="8Wk-eJ-OFd"/>
+                                                            <include reference="ifm-GL-6Qc"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="setTodoDone:" destination="fPv-ed-fw1" eventType="touchUpInside" id="4yL-uF-DhJ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="DDq-Hv-9ZX" firstAttribute="top" secondItem="d4g-zi-iuC" secondAttribute="top" constant="22" id="Elh-Q0-fYa"/>
+                                                <constraint firstItem="lqr-Yc-RNP" firstAttribute="leading" secondItem="d4g-zi-iuC" secondAttribute="leading" constant="8" id="JKc-Rr-HZI"/>
+                                                <constraint firstItem="lqr-Yc-RNP" firstAttribute="top" secondItem="d4g-zi-iuC" secondAttribute="top" constant="15" id="LFz-Eu-VKf"/>
                                                 <constraint firstAttribute="bottom" secondItem="DDq-Hv-9ZX" secondAttribute="bottom" constant="5" id="MHw-DD-nER"/>
+                                                <constraint firstItem="DDq-Hv-9ZX" firstAttribute="leading" secondItem="lqr-Yc-RNP" secondAttribute="trailing" constant="8" id="PUo-ys-kGC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="DDq-Hv-9ZX" secondAttribute="trailing" id="Qgm-tN-zZb"/>
-                                                <constraint firstItem="DDq-Hv-9ZX" firstAttribute="leading" secondItem="d4g-zi-iuC" secondAttribute="leading" constant="16" id="vlL-WZ-nkD"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="DDq-Hv-9ZX"/>
+                                                    <exclude reference="lqr-Yc-RNP"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="JKc-Rr-HZI"/>
+                                                    <exclude reference="LFz-Eu-VKf"/>
                                                     <exclude reference="Elh-Q0-fYa"/>
                                                     <exclude reference="MHw-DD-nER"/>
+                                                    <exclude reference="PUo-ys-kGC"/>
                                                     <exclude reference="Qgm-tN-zZb"/>
-                                                    <exclude reference="vlL-WZ-nkD"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="DDq-Hv-9ZX"/>
+                                                    <include reference="lqr-Yc-RNP"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="JKc-Rr-HZI"/>
+                                                    <include reference="LFz-Eu-VKf"/>
                                                     <include reference="Elh-Q0-fYa"/>
                                                     <include reference="MHw-DD-nER"/>
+                                                    <include reference="PUo-ys-kGC"/>
                                                     <include reference="Qgm-tN-zZb"/>
-                                                    <include reference="vlL-WZ-nkD"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -305,6 +339,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTodoTextField" destination="bUN-6R-yWd" id="3nT-Ni-ILm"/>
                         <outlet property="fackNavigationBarToLeft" destination="eG7-oj-Eu4" id="nRz-Zq-ber"/>
                         <outlet property="todoTableViewToLeft" destination="NVL-8X-8lo" id="awm-af-hVW"/>
                         <outlet property="todolistTableView" destination="qUd-he-0c4" id="6gl-oP-Wfw"/>
