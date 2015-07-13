@@ -117,7 +117,7 @@
 
 + (NSArray *)queryDayTodoList
 {
-    return [[DataLibrary querier] query:[Todo class]];
+    return [[DataLibrary querier] query:[Todo class] otherCondition:@"order by priority desc" withParam:nil];
 }
 
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date
