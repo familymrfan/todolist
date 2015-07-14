@@ -11,7 +11,7 @@
 #import "TodoListTableViewCell.h"
 #import "QueueManager.h"
 
-@interface TodoListTableView () <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate>
+@interface TodoListTableView () <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate, TodoListTableViewCellDelegate>
 
 @property (nonatomic) NSMutableArray* todoList;
 @property (nonatomic) TodoListTableViewCell* cellRightStatus;
@@ -92,6 +92,13 @@
     UIGestureRecognizerState state = longPress.state;
     CGPoint location = [longPress locationInView:self];
     NSIndexPath *indexPath = [self indexPathForRowAtPoint:location];
+    
+    Todo* todo = [self.todoList objectAtIndex:indexPath.row];
+    if (state == UIGestureRecognizerStateBegan && todo.status.integerValue == kTodoStatusDone) {
+        return ;
+    } else if (state == UIGestureRecognizerStateChanged && todo.status.integerValue == kTodoStatusDone) {
+        indexPath = nil;
+    }
     if (indexPath == nil) {
         indexPath = self.sourceIndexPath;
     }
@@ -175,10 +182,19 @@
     TodoListTableViewCell* cell = [self dequeueReusableCellWithIdentifier:@"todoCellIdentifier"];
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:50];
     [cell setDelegate:self];
+    [cell setTodoListCellDelegate:self];
     Todo* todo = [self.todoList objectAtIndex:indexPath.row];
     if (todo.subject) {
         [cell.todoLabel setText:todo.subject];
     }
+    if (todo.status.integerValue == kTodoStatusDone) {
+        [cell.buttonDone setTitle:@"Yes" forState:UIControlStateNormal];
+        [cell.todoLabel setTextColor:[UIColor lightGrayColor]];
+    } else {
+        [cell.buttonDone setTitle:@"No" forState:UIControlStateNormal];
+        [cell.todoLabel setTextColor:[UIColor blackColor]];
+    }
+    
     return cell;
 }
 
@@ -311,5 +327,37 @@
     return (CGRectGetHeight(self.frame) < self.contentSize.height);
 }
 
+#pragma marks todoListCellDelegate
+
+-(void)todoDone:(TodoListTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    Todo* todo = [self.todoList objectAtIndex:indexPath.row];
+    [TodoLogic putTodoAtBottom:todo.rowId];
+    todo.status = @(kTodoStatusDone);
+    [self reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [TodoLogic updateTodo:todo finish:nil];
+    
+    [self.todoList removeObject:todo];
+    [self.todoList addObject:todo];
+    
+    
+    [self moveRowAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForRow:self.todoList.count-1 inSection:0]];
+}
+
+-(void)todoNoDone:(TodoListTableViewCell *)cell
+{
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    Todo* todo = [self.todoList objectAtIndex:indexPath.row];
+    [TodoLogic putTodoAtTop:todo.rowId];
+    todo.status = @(kTodoStatusNoDo);
+    [self reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [TodoLogic updateTodo:todo finish:nil];
+    [self.todoList removeObject:todo];
+    [self.todoList insertObject:todo atIndex:0];
+    
+    
+    [self moveRowAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+}
 
 @end

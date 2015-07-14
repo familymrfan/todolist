@@ -21,6 +21,15 @@
 }
 
 - (IBAction)setTodoDone:(id)sender {
-    
+    UIButton* btn = sender;
+    if ([btn.currentTitle compare:@"no" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        if ([self.todoListCellDelegate respondsToSelector:@selector(todoDone:)]) {
+            [self.todoListCellDelegate todoDone:self];
+        }
+    } else {
+        if ([self.todoListCellDelegate respondsToSelector:@selector(todoNoDone:)]) {
+            [self.todoListCellDelegate todoNoDone:self];
+        }
+    }
 }
 @end

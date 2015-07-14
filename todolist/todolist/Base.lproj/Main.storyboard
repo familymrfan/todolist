@@ -223,12 +223,12 @@
                                                     <exclude reference="lqr-Yc-RNP"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="JKc-Rr-HZI"/>
-                                                    <exclude reference="LFz-Eu-VKf"/>
                                                     <exclude reference="Elh-Q0-fYa"/>
                                                     <exclude reference="MHw-DD-nER"/>
                                                     <exclude reference="PUo-ys-kGC"/>
                                                     <exclude reference="Qgm-tN-zZb"/>
+                                                    <exclude reference="JKc-Rr-HZI"/>
+                                                    <exclude reference="LFz-Eu-VKf"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -237,16 +237,17 @@
                                                     <include reference="lqr-Yc-RNP"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="JKc-Rr-HZI"/>
-                                                    <include reference="LFz-Eu-VKf"/>
                                                     <include reference="Elh-Q0-fYa"/>
                                                     <include reference="MHw-DD-nER"/>
                                                     <include reference="PUo-ys-kGC"/>
                                                     <include reference="Qgm-tN-zZb"/>
+                                                    <include reference="JKc-Rr-HZI"/>
+                                                    <include reference="LFz-Eu-VKf"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonDone" destination="lqr-Yc-RNP" id="C5R-Uy-WfA"/>
                                             <outlet property="todoLabel" destination="DDq-Hv-9ZX" id="HFz-3S-k7E"/>
                                         </connections>
                                     </tableViewCell>

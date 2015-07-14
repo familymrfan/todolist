@@ -9,8 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
 
+@class TodoListTableViewCell;
+@protocol TodoListTableViewCellDelegate <NSObject>
+
+@optional
+
+- (void)todoDone:(TodoListTableViewCell *)cell;
+- (void)todoNoDone:(TodoListTableViewCell *)cell;
+
+@end
+
 @interface TodoListTableViewCell : SWTableViewCell
 
+@property (nonatomic, weak) id<TodoListTableViewCellDelegate> todoListCellDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *todoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDone;
 
 @end

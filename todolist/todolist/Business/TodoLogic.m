@@ -115,6 +115,19 @@
     }];
 }
 
++ (void)putTodoAtTop:(NSNumber *)todoId
+{
+    NSArray* todolist = [self queryDayTodoList];
+    if (todolist.count > 0) {
+        [self putOnAnotherTodoWithSrcTodoId:todoId withDestTodoId:[todolist.firstObject rowId] finish:nil];
+    }
+}
+
++ (void)putTodoAtBottom:(NSNumber *)todoId
+{
+    [self putOnAnotherTodoWithSrcTodoId:todoId withDestTodoId:nil finish:nil];
+}
+
 + (NSArray *)queryDayTodoList
 {
     return [[DataLibrary querier] query:[Todo class] otherCondition:@"order by priority desc" withParam:nil];
