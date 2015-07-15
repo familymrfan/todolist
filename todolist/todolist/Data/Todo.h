@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
 
 @interface Todo : MrObject
 
+@property (nonatomic) NSNumber* parent_rowid;
 @property (nonatomic) NSString* subject;
 @property (nonatomic) NSString* detail;
 @property (nonatomic) NSDate* create_date;

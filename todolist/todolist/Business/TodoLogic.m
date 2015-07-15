@@ -61,11 +61,17 @@
 
 + (void)createNewTodo:(Todo *)todo finishCreate:(void(^)(id result))finishCreate
 {
+    [self createNewTodo:todo withParentId:nil finishCreate:finishCreate];
+}
+
++ (void)createNewTodo:(Todo *)todo withParentId:(NSNumber *)rowId finishCreate:(void (^)(id))finishCreate
+{
     TodoLogic* todoLogic = [self sharedInstace];
     [todoLogic.queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         NSString* priority = [self risePriority:[self pickMaxPriority]];
         assert(priority);
         todo.rowId = nil;
+        todo.parent_rowid = rowId;
         todo.create_date = [NSDate date];
         todo.priority = priority;
         todo.status = @(kTodoStatusNoDo);
@@ -131,6 +137,11 @@
 + (NSArray *)queryDayTodoList
 {
     return [[DataLibrary querier] query:[Todo class] otherCondition:@"order by priority desc" withParam:nil];
+}
+
++ (NSArray *)queryDayTodoChildList:(NSNumber *)parentId
+{
+    return [[DataLibrary querier] query:[Todo class] otherCondition:@"where parent_rowid = ? order by priority desc" withParam:@[parentId]];
 }
 
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date
