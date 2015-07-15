@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cad-dM-1ga">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cad-dM-1ga">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="todoListViewControllerIdentity" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -344,11 +344,12 @@
                         <outlet property="fackNavigationBarToLeft" destination="eG7-oj-Eu4" id="nRz-Zq-ber"/>
                         <outlet property="todoTableViewToLeft" destination="NVL-8X-8lo" id="awm-af-hVW"/>
                         <outlet property="todolistTableView" destination="qUd-he-0c4" id="6gl-oP-Wfw"/>
+                        <segue destination="30u-S0-wgG" kind="show" identifier="mainToDetail" id="M1P-0n-hnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123.5" y="176"/>
+            <point key="canvasLocation" x="1120.5" y="171"/>
         </scene>
         <!--Todo Detail View Controller-->
         <scene sceneID="AbX-US-r0T">
@@ -373,7 +374,8 @@
                                         <exclude reference="54G-0p-MmR"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="20"/>
                                     <mask key="constraints">
                                         <include reference="54G-0p-MmR"/>
                                     </mask>
@@ -408,7 +410,8 @@
                                         <exclude reference="eHE-RE-cWZ"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="40" width="400" height="44"/>
                                     <mask key="subviews">
                                         <include reference="0qR-X3-1Az"/>
                                     </mask>
@@ -428,7 +431,8 @@
                                         <exclude reference="Z9x-2d-rev"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="84" width="400" height="43"/>
                                     <mask key="constraints">
                                         <include reference="Z9x-2d-rev"/>
                                     </mask>
@@ -487,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="So0-Io-OOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768.5" y="176"/>
+            <point key="canvasLocation" x="1843.5" y="171"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lb6-do-TeD">

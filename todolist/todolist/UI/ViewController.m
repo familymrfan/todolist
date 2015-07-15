@@ -13,7 +13,7 @@
 
 static const NSInteger kLeftlistSpace = 50;
 
-@interface ViewController () <UITextFieldDelegate>
+@interface ViewController () <UITextFieldDelegate, TodoListTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TodoListTableView *todolistTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *todoTableViewToLeft;
@@ -27,6 +27,7 @@ static const NSInteger kLeftlistSpace = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.todolistTableView setTodoListTableViewDelegate:self];
     [self.addTodoTextField setDelegate:self];
 }
 
@@ -62,6 +63,12 @@ static const NSInteger kLeftlistSpace = 50;
     todo.subject = self.addTodoTextField.text;
     [self.todolistTableView addTodo:todo];
     return YES;
+}
+
+#pragma mark todolisttableviewdelegate
+-(void)cellSelect:(TodoListTableViewCell *)cell
+{
+    [self performSegueWithIdentifier:@"mainToDetail" sender:cell];
 }
 
 @end

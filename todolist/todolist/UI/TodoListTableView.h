@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class TodoListTableViewCell;
+@protocol TodoListTableViewDelegate <NSObject>
+
+- (void)cellSelect:(TodoListTableViewCell *)cell;
+
+@end
+
 @class Todo;
 @interface TodoListTableView : UITableView
+
+@property (nonatomic, assign) id<TodoListTableViewDelegate> todoListTableViewDelegate;
 
 - (void)addTodo:(Todo *)todo;
 

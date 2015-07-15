@@ -10,6 +10,7 @@
 #import "TodoLogic.h"
 #import "TodoListTableViewCell.h"
 #import "QueueManager.h"
+#import "ViewController.h"
 
 @interface TodoListTableView () <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate, TodoListTableViewCellDelegate>
 
@@ -96,9 +97,12 @@
     Todo* todo = [self.todoList objectAtIndex:indexPath.row];
     if (state == UIGestureRecognizerStateBegan && todo.status.integerValue == kTodoStatusDone) {
         return ;
+    } else if (state == UIGestureRecognizerStateChanged && self.sourceIndexPath == nil) {
+        return ;
     } else if (state == UIGestureRecognizerStateChanged && todo.status.integerValue == kTodoStatusDone) {
         indexPath = nil;
     }
+    
     if (indexPath == nil) {
         indexPath = self.sourceIndexPath;
     }
@@ -201,9 +205,9 @@
 #pragma marks UITableViewDelegate method
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //UIViewController* todoDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"todoDetailViewControllerIdentity"];
-    //[self.superview.navigationController pushViewController:todoDetailViewController animated:YES];
+    if ([self.todoListTableViewDelegate respondsToSelector:@selector(cellSelect:)]) {
+        [self.todoListTableViewDelegate cellSelect:(id)[self cellForRowAtIndexPath:indexPath]];
+    }
 }
 
 #pragma marks SWTableViewCellDelegate
