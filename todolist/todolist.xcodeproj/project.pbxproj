@@ -31,6 +31,7 @@
 		E31DEAD61B2DAD0E00D23499 /* TodoListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31DEAD51B2DAD0E00D23499 /* TodoListTableView.m */; };
 		E31DEAD91B2DAD5F00D23499 /* TodoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E31DEAD81B2DAD5F00D23499 /* TodoListTableViewCell.m */; };
 		E31DEADF1B2DCAF700D23499 /* TodoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31DEADE1B2DCAF700D23499 /* TodoDetailViewController.m */; };
+		E326D67B1B57F2DC00D966BE /* TodoDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E326D67A1B57F2DC00D966BE /* TodoDetailTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		E31DEAD81B2DAD5F00D23499 /* TodoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoListTableViewCell.m; path = UI/TodoListTableViewCell.m; sourceTree = "<group>"; };
 		E31DEADD1B2DCAF700D23499 /* TodoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoDetailViewController.h; path = UI/TodoDetailViewController.h; sourceTree = "<group>"; };
 		E31DEADE1B2DCAF700D23499 /* TodoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoDetailViewController.m; path = UI/TodoDetailViewController.m; sourceTree = "<group>"; };
+		E326D6791B57F2DC00D966BE /* TodoDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoDetailTableView.h; path = UI/TodoDetailTableView.h; sourceTree = "<group>"; };
+		E326D67A1B57F2DC00D966BE /* TodoDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoDetailTableView.m; path = UI/TodoDetailTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 				E31DEAD81B2DAD5F00D23499 /* TodoListTableViewCell.m */,
 				E31DEADD1B2DCAF700D23499 /* TodoDetailViewController.h */,
 				E31DEADE1B2DCAF700D23499 /* TodoDetailViewController.m */,
+				E326D6791B57F2DC00D966BE /* TodoDetailTableView.h */,
+				E326D67A1B57F2DC00D966BE /* TodoDetailTableView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */,
 				0BCA95651B22BE9D007B395D /* SZTextView.m in Sources */,
 				0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */,
+				E326D67B1B57F2DC00D966BE /* TodoDetailTableView.m in Sources */,
 				E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
