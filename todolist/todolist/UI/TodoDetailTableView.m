@@ -45,11 +45,19 @@
     return 3;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 1;
+    }
+    return 20;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return @"time plane";
+            return nil;
         case 1:
             return @"child todo";
         case 2:
