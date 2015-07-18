@@ -10,6 +10,7 @@
 #import "TodoLogic.h"
 #import "TodoListTableView.h"
 #import "TodoListTableViewCell.h"
+#import "TodoDetailViewController.h"
 
 static const NSInteger kLeftlistSpace = 50;
 
@@ -68,7 +69,19 @@ static const NSInteger kLeftlistSpace = 50;
 #pragma mark todolisttableviewdelegate
 -(void)cellSelect:(TodoListTableViewCell *)cell
 {
-    [self performSegueWithIdentifier:@"mainToDetail" sender:cell];
+    NSIndexPath* indexPath = [self.todolistTableView indexPathForCell:cell];
+    if (indexPath) {
+        Todo* todo = [[self.todolistTableView getTodoList] objectAtIndex:indexPath.row];
+        if (todo) {
+            [self performSegueWithIdentifier:@"mainToDetail" sender:todo];
+        }
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    TodoDetailViewController* vc = [segue destinationViewController];
+    vc.todo = sender;
 }
 
 @end

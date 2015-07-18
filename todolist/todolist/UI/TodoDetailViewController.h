@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class Todo;
 @interface TodoDetailViewController : UIViewController
+
+@property (nonatomic) Todo* todo;
 
 @end

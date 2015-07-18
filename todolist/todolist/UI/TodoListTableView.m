@@ -49,6 +49,11 @@
     }];
 }
 
+- (NSArray *)getTodoList
+{
+    return self.todoList;
+}
+
 - (UIView *)customSnapshotFromView:(UIView *)inputView {
     // Make an image from the input view.
     UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
@@ -345,7 +350,6 @@
     [self.todoList removeObject:todo];
     [self.todoList addObject:todo];
     
-    
     [self moveRowAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForRow:self.todoList.count-1 inSection:0]];
 }
 
@@ -359,7 +363,6 @@
     [TodoLogic updateTodo:todo finish:nil];
     [self.todoList removeObject:todo];
     [self.todoList insertObject:todo atIndex:0];
-    
     
     [self moveRowAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }

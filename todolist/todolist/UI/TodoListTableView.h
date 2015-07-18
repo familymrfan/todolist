@@ -22,4 +22,6 @@
 
 - (void)addTodo:(Todo *)todo;
 
+- (NSArray *)getTodoList;
+
 @end
