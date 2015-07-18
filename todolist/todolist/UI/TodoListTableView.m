@@ -30,7 +30,7 @@
 
 -(void)awakeFromNib
 {
-    self.todoList = [NSMutableArray arrayWithArray:[TodoLogic queryDayTodoList]];
+    self.todoList = [NSMutableArray arrayWithArray:[TodoLogic queryTodoList]];
     [self setDelegate:self];
     [self setDataSource:self];
     

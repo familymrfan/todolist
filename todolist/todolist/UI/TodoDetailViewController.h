@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TodoDetailTableView.h"
 
 @class Todo;
 @interface TodoDetailViewController : UIViewController
 
 @property (nonatomic) Todo* todo;
+@property (weak, nonatomic) IBOutlet TodoDetailTableView *todoDetailTableView;
+
 
 @end

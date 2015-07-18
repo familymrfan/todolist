@@ -61,17 +61,14 @@
 
 + (void)createNewTodo:(Todo *)todo finishCreate:(void(^)(id result))finishCreate
 {
-    [self createNewTodo:todo withParentId:nil finishCreate:finishCreate];
-}
-
-+ (void)createNewTodo:(Todo *)todo withParentId:(NSNumber *)rowId finishCreate:(void (^)(id))finishCreate
-{
     TodoLogic* todoLogic = [self sharedInstace];
     [todoLogic.queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         NSString* priority = [self risePriority:[self pickMaxPriority]];
         assert(priority);
         todo.rowId = nil;
-        todo.parent_rowid = rowId;
+        if (todo.parent_rowid == nil) {
+            todo.parent_rowid = @0;
+        }
         todo.create_date = [NSDate date];
         todo.priority = priority;
         todo.status = @(kTodoStatusNoDo);
@@ -123,7 +120,7 @@
 
 + (void)putTodoAtTop:(NSNumber *)todoId
 {
-    NSArray* todolist = [self queryDayTodoList];
+    NSArray* todolist = [self queryTodoList];
     if (todolist.count > 0) {
         [self putOnAnotherTodoWithSrcTodoId:todoId withDestTodoId:[todolist.firstObject rowId] finish:nil];
     }
@@ -134,12 +131,12 @@
     [self putOnAnotherTodoWithSrcTodoId:todoId withDestTodoId:nil finish:nil];
 }
 
-+ (NSArray *)queryDayTodoList
++ (NSArray *)queryTodoList
 {
-    return [[DataLibrary querier] query:[Todo class] otherCondition:@"order by priority desc" withParam:nil];
+    return [self queryTodoChildList:@0];
 }
 
-+ (NSArray *)queryDayTodoChildList:(NSNumber *)parentId
++ (NSArray *)queryTodoChildList:(NSNumber *)parentId
 {
     return [[DataLibrary querier] query:[Todo class] otherCondition:@"where parent_rowid = ? order by priority desc" withParam:@[parentId]];
 }
@@ -172,10 +169,21 @@
     }];
 }
 
++ (void)deleteChildTodos:(NSNumber *)parentId
+{
+    NSArray* childTodos = [self queryTodoChildList:parentId];
+    [childTodos enumerateObjectsUsingBlock:^(Todo* todo, NSUInteger idx, BOOL *stop) {
+        [[DataLibrary saver] remove:[Todo class] rowId:todo.rowId];
+        [self deleteChildTodos:todo.rowId];
+    }];
+}
+
 + (void)deleteTodo:(NSNumber *)todoId
 {
     [[DataLibrary saver] remove:[Todo class] rowId:todoId];
+    [self deleteChildTodos:todoId];
 }
+
 
 + (void)addTodoNotification:(Todo *)todo date:(NSDate *)date
 {

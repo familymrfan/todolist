@@ -14,8 +14,6 @@
 // 添加一条新的待办
 + (void)createNewTodo:(Todo *)todo finishCreate:(void(^)(id result))finishCreate;
 
-+ (void)createNewTodo:(Todo *)todo withParentId:(NSNumber *)rowId finishCreate:(void (^)(id))finishCreate;
-
 // 移动一条待办在另一条待办之上, 如果destTodoId是nil，移动置最底层
 + (void)putOnAnotherTodoWithSrcTodoId:(NSNumber *)srcTodoId withDestTodoId:(NSNumber *)destTodoId finish:(void(^)(NSNumber* destTodoId))finish;
 
@@ -26,10 +24,10 @@
 + (void)putTodoAtBottom:(NSNumber *)todoId;
 
 // 返回待办列表
-+ (NSArray *)queryDayTodoList;
++ (NSArray *)queryTodoList;
 
 // 返回子待办
-+ (NSArray *)queryDayTodoChildList:(NSNumber *)parentId;
++ (NSArray *)queryTodoChildList:(NSNumber *)parentId;
 
 // 返回date标记的日期的待办列表
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date;
@@ -40,7 +38,7 @@
 // 更新待办
 + (void)updateTodo:(Todo *)todo finish:(void(^)(id result))finish;
 
-// 删除待办
+// 删除待办, 连同子任务
 + (void)deleteTodo:(NSNumber *)todoId;
 
 // 添加提醒

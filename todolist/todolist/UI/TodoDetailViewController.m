@@ -7,8 +7,9 @@
 //
 
 #import "TodoDetailViewController.h"
+#import "TodoLogic.h"
 
-@interface TodoDetailViewController ()
+@interface TodoDetailViewController () <TodoDetailTableViewDelegate>
 
 @end
 
@@ -17,6 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.todoDetailTableView.todo = self.todo;
+    self.todoDetailTableView.todolist = [[TodoLogic queryTodoChildList:self.todo.rowId] mutableCopy];
+    [self.todoDetailTableView setTodoDetailTableViewDelegate:self];
+}
+
+-(void)cellSelect:(TodoListTableViewCell *)cell
+{
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    TodoDetailViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"todoDetailViewControllerIdentity"];
+    NSIndexPath* indexPath = [self.todoDetailTableView indexPathForCell:(id)cell];
+    if (indexPath && indexPath.section == 1) {
+        Todo* todo = [self.todoDetailTableView.todolist objectAtIndex:indexPath.row];
+        if (todo) {
+            vc.todo = todo;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
