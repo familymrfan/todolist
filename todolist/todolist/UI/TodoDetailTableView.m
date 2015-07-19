@@ -11,7 +11,7 @@
 #import "TodoDetailAddChildTodoCell.h"
 #import "TodoLogic.h"
 
-@interface TodoDetailTableView () <UITableViewDataSource, UITableViewDelegate, TodoDetailAddChildTodoCellDelegate>
+@interface TodoDetailTableView () <UITableViewDataSource, UITableViewDelegate, TodoDetailAddChildTodoCellDelegate, SWTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *childTodoTextFieldAdd;
 
@@ -102,6 +102,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == self.todolist.count) {
+        return ;
+    }
     if ([self.todoDetailTableViewDelegate respondsToSelector:@selector(cellSelect:)]) {
         [self.todoDetailTableViewDelegate cellSelect:(id)[self cellForRowAtIndexPath:indexPath]];
     }

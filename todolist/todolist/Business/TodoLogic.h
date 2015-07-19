@@ -29,6 +29,9 @@
 // 返回子待办
 + (NSArray *)queryTodoChildList:(NSNumber *)parentId;
 
+// 返回待办的父亲列表
++ (NSArray *)queryParentTodoList:(NSNumber *)todoId;
+
 // 返回date标记的日期的待办列表
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date;
 

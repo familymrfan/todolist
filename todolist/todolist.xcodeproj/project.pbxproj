@@ -18,6 +18,8 @@
 		0BA0DD561B14A21400522DFF /* FMMoveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DD541B14A21400522DFF /* FMMoveTableViewCell.m */; };
 		0BA0DD5A1B16201400522DFF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA0DD591B16201400522DFF /* QuartzCore.framework */; };
 		0BB4B2331B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB4B2321B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.m */; };
+		0BB4B2381B5A559C00581DF5 /* TodoDetailPathCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB4B2371B5A559C00581DF5 /* TodoDetailPathCollectionView.m */; };
+		0BB4B23C1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB4B23B1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.m */; };
 		0BC4D39D1AECCA1A008D40A2 /* Mr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC4D39A1AECC9F2008D40A2 /* Mr.framework */; };
 		0BC4D3A11AECD0CD008D40A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3A01AECD0CD008D40A2 /* ViewController.m */; };
 		0BC4D3A61AECD22B008D40A2 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4D3A51AECD22B008D40A2 /* Todo.m */; };
@@ -81,6 +83,10 @@
 		0BA0DD591B16201400522DFF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0BB4B2311B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoDetailAddChildTodoCell.h; path = UI/TodoDetailAddChildTodoCell.h; sourceTree = "<group>"; };
 		0BB4B2321B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoDetailAddChildTodoCell.m; path = UI/TodoDetailAddChildTodoCell.m; sourceTree = "<group>"; };
+		0BB4B2361B5A559C00581DF5 /* TodoDetailPathCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoDetailPathCollectionView.h; path = UI/TodoDetailPathCollectionView.h; sourceTree = "<group>"; };
+		0BB4B2371B5A559C00581DF5 /* TodoDetailPathCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoDetailPathCollectionView.m; path = UI/TodoDetailPathCollectionView.m; sourceTree = "<group>"; };
+		0BB4B23A1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoDetailPathCollectionViewCell.h; path = UI/TodoDetailPathCollectionViewCell.h; sourceTree = "<group>"; };
+		0BB4B23B1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoDetailPathCollectionViewCell.m; path = UI/TodoDetailPathCollectionViewCell.m; sourceTree = "<group>"; };
 		0BC4D3931AECC9F1008D40A2 /* Mr.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mr.xcodeproj; path = third_party/Mr./Mr.xcodeproj; sourceTree = "<group>"; };
 		0BC4D39F1AECD0CD008D40A2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = UI/ViewController.h; sourceTree = "<group>"; };
 		0BC4D3A01AECD0CD008D40A2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = UI/ViewController.m; sourceTree = "<group>"; };
@@ -251,6 +257,10 @@
 				E326D67A1B57F2DC00D966BE /* TodoDetailTableView.m */,
 				0BB4B2311B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.h */,
 				0BB4B2321B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.m */,
+				0BB4B2361B5A559C00581DF5 /* TodoDetailPathCollectionView.h */,
+				0BB4B2371B5A559C00581DF5 /* TodoDetailPathCollectionView.m */,
+				0BB4B23A1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.h */,
+				0BB4B23B1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -432,6 +442,7 @@
 				E314617F1B11CBF9003BBF7A /* SWLongPressGestureRecognizer.m in Sources */,
 				E314617E1B11CBF9003BBF7A /* SWCellScrollView.m in Sources */,
 				0B84C9241AE375EB00A93AA0 /* main.m in Sources */,
+				0BB4B23C1B5C0FB200581DF5 /* TodoDetailPathCollectionViewCell.m in Sources */,
 				0BC4D3B01AECDF3E008D40A2 /* TodoLogic.m in Sources */,
 				0BC4D3A61AECD22B008D40A2 /* Todo.m in Sources */,
 				E31461821B11CBF9003BBF7A /* SWUtilityButtonView.m in Sources */,
@@ -443,6 +454,7 @@
 				0B13F0CC1B18578200509F2A /* UIErasureGestureRecognizer.m in Sources */,
 				E326D67B1B57F2DC00D966BE /* TodoDetailTableView.m in Sources */,
 				E31461811B11CBF9003BBF7A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				0BB4B2381B5A559C00581DF5 /* TodoDetailPathCollectionView.m in Sources */,
 				0BB4B2331B5A2EB200581DF5 /* TodoDetailAddChildTodoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

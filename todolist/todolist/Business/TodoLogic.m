@@ -141,6 +141,18 @@
     return [[DataLibrary querier] query:[Todo class] otherCondition:@"where parent_rowid = ? order by priority desc" withParam:@[parentId]];
 }
 
++ (NSArray *)queryParentTodoList:(NSNumber *)todoId
+{
+    NSMutableArray* result = [NSMutableArray array];
+    Todo* todo = [self queryTodoWithId:todoId];
+    Todo* parentTodo = [self queryTodoWithId:todo.parent_rowid];
+    if (parentTodo) {
+        [result addObjectsFromArray:[self queryParentTodoList:parentTodo.rowId]];
+        [result addObject:parentTodo];
+    }
+    return result;
+}
+
 + (NSArray *)queryDayTodoListWithDate:(NSDate *)date
 {
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -154,6 +166,9 @@
 
 + (Todo *)queryTodoWithId:(NSNumber *)todoId
 {
+    if (todoId == nil) {
+        return nil;
+    }
     return [[DataLibrary querier] query:[Todo class] otherCondition:@"where rowId = ?" withParam:@[todoId]].firstObject;
 }
 

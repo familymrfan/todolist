@@ -21,6 +21,7 @@
     self.todoDetailTableView.todo = self.todo;
     self.todoDetailTableView.todolist = [[TodoLogic queryTodoChildList:self.todo.rowId] mutableCopy];
     [self.todoDetailTableView setTodoDetailTableViewDelegate:self];
+    self.todoDetailCollectionView.todoSubjectList = [[TodoLogic queryParentTodoList:self.todo.rowId] arrayByAddingObject:self.todo];
 }
 
 -(void)cellSelect:(TodoListTableViewCell *)cell
